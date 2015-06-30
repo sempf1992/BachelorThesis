@@ -1,0 +1,128 @@
+\documentclass[../Thesis.tex]{subfiles}
+\begin{document}
+We start of by introducing exact sequences in $\tilde{K}(X)$.
+\begin{prop}
+If $X$ is compact Hausdorff and $A \subset X$ is a closed subspace, then the inclusion and quotient maps $A \rightarrow^i X \rightarrow^q X / A$ induce homomorphisms $\tilde{K}(X/A) \rightarrow ^{q^*} \tilde{K}(X) \rightarrow^{i^*} \tilde{K}(A)$ for which the kernel of $i^*$ equals the image of $q^*$. 
+\end{prop}
+\begin{myproof}
+The inclusion $Im q^* \subset \ker i^*$ is equivalent to $i^* q^* = 0$. Since $qi$ is equal to the composition $A \rightarrow A/A \rightarrow X/A$ and $\tilde{K}(A/A) = 0$ we see that $i^* q^* = 0$.
+\\The other inclusion is more work. The general idea is that the only things that get mapped to zero come from the set $A$.
+Now suppose that $E$ is in the kernel of $i^*$, i.e. an element of $\tilde{K}(X)$ such that $i^*(E)$ is $0$. Then we are going to show it is an element in the image of $q^*$. We know that the restriction of $E$ over $A$ is trivial up to adding a trivial vector space. Hence we can add a trivial vector bundle to $E$, thus staying in the same equivalence class, and get $E$ trivial over $A$. We have a trivialization $h : p^{-1}(A) \rightarrow A \times \mathbb{C}^n$. We now define $E/h$ to be the quotient of $E$ under the relation $h^{-1}(x,v) \sim h^{-1}(y,v)$ for all $x,y \in A$. Then we have a projection $E/h$ to $X/A$. To see that this is a vector bundle on $X/A$ we need to show that there exists a trivialization over a neighborhood of the point $A/A$.
+\\To find such a neighborhood, we will make an open cover $\{U_\alpha\}$ of $A$ in $X$. On this open cover we have sections $s_i : A \cap U_\alpha \rightarrow E$ to the fiber of $E$. These sections can be extended by the Tietze extension theorem. We also have a partition of unity $\{ \psi_\alpha, \psi\}$ subordinate to the open cover $\{U_\alpha, A\}$. We then define 
+\begin{equation}
+\sum_\alpha \psi_\alpha s_{i\alpha}
+\end{equation}
+This is an extension of the section $s_i$ on $U_\alpha$ to a section on $X$. Since these sections form a basis on $A$ and can be seen as an invertible linear function, they are a basis in a neighborhood of $A$. 
+\\Now we have a trivialization $h$ of $E$ which extends to a neighborhood $U$ of $A$. Thus we have a trivialization of $E/h$ over $U/A$. Thus $E/h$ is a vector bundle. Note that we have the following commutative diagram:
+ \\\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes,row sep=3em,column sep=2em,minimum width=2em]
+  {
+\  E & E/H\\
+   X & X/A\\};
+  \path[-stealth]
+    (m-1-1) edge node [above] { } (m-1-2)
+    (m-1-1) edge node [right] {p} (m-2-1)
+    (m-2-1) edge node [below] {q} (m-2-2)
+    (m-1-2) edge node [right] { } (m-2-2);
+\end{tikzpicture}    
+
+hence we have an isomorphism $E \approx q^*(E/h)$, and thus we have found an image.
+\end{myproof}
+We will extend our exact sequence. First we begin with a sequence of inclusions. Each space in this sequence is created by the cone of the space two steps back in the sequence. The vectical maps are quotient maps if we collaps that cone to a point.
+ \\\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes,row sep=3em,column sep=2em,minimum width=2em]
+  {
+  A & X & X \cup CA & (X \cup CA) \cup CX & ((X \cup CA) \cup CX) \cup C(X \cup CA)\\
+   &  & X/A & SA & SX
+\\};
+  \path[-stealth]
+    (m-1-1) edge node [above] { } (m-1-2)
+    (m-1-2) edge node [above] { } (m-1-3)
+    (m-1-3) edge node [above] { } (m-1-4)
+    (m-1-4) edge node [above] { } (m-1-5)
+    (m-1-3) edge node [above] { } (m-2-3)
+    (m-1-4) edge node [above] { } (m-2-4)
+    (m-1-5) edge node [above] { } (m-2-5);
+\end{tikzpicture}    
+\begin{Cor}
+If $A$ is contractible, the quotient map $Q : X \rightarrow X/A$ induces a bijection $q^* : Vect^n(X/a) \rightarrow Vect^n(X)$ for all $n$.
+\end{Cor}
+\begin{myproof}
+Since $A$ is contractible we notice that the vector bundle $E \rightarrow X$ must be trivial. Hence we have a trivialization $h$. This gives a vector bundle $E/h \rightarrow X/h$ as in the previous proof. We will now show that the equivalence class of $e/h$ does not depend on $h$.
+\\Given two trivializations $h_0$ and $h_1$, we can write $h_1 =  (h_1h_0^{-1})h_0$, we see that $h_0$ and $h_1$ differ by an element $g_x$ of $GL(n, \mathbb{C})$, i.e. an invertible matrix, for each point $x$ in $A$. The resulting map $g : A \rightarrow GL(n, \mathbb{C})$ is homotopic to a constant map $x \rightarrow \alpha \in GL(n, \mathbb{C})$ since $A$ is contractible. Write now $h_1 = (h_1h_0^{-1}\alpha^{-1})(\alpha h_0)$, we see that composing $h_0$ with $alpha$ does not change $E/h_0$. Assume that $\alpha$ is the identity. 
+Then the homotopy from $g$ to the identity gives a homotopy $H$ from $h_0$ to $h_1$. We now build a new vector bundle
+
+\begin{equation}
+(E \times I)/H \rightarrow (X/A) \times I
+\end{equation}
+
+This vector bundle restricts to $E/h_0$ on one end of $I$, and $E/h_1$ on the other end of $I$. Therefore $E/h_0 \approx E/h_1$.
+\\From this we conclude that we have a well defined map $Vect^n(X) \rightarrow Vect^n(X/A)$, namely $E \mapsto E/h$. Is is an inverse of $q^*$ since $q^*(E/h) \approx E$, by the preceeding proof, and for a bundle $E \rightarrow X/A$ we have $q^*(E)/h \approx E$ for the trivialization $h$ of $q^*(E)$ over $A$. Hence we have shown that $q^*$ is bijective.
+\end{myproof}
+From the previous two statements we have an exact sequence of $\tilde{K}$ groups
+\begin{equation}
+ ...\rightarrow \tilde{K}(SX) \rightarrow \tilde{K}(SA) \rightarrow \tilde{K}(X/a) \rightarrow \tilde{K}(X) \rightarrow \tilde{K}(A)
+ \end{equation}
+Now, suppose that $X$ is the wedge sum $A \vee B$ then $X/A = B $ and the sequence breaks into split short exact sequences. Hence $\tilde{K}(X) \rightarrow \tilde{K}(A)\oplus \tilde{K}(B)$ is an isomorphism.
+\\Our next goal is to use the tools we have developed to create a new long exact sequence, from which we can deduce the Bott Periodicity. The first step is to obtain a reduced version of the external product. This will be a ring homomorphism $\tilde{K}(X) \otimes \tilde{K}(Y) \rightarrow \tilde{K}(X \wedge Y)$. We will start with the long exact sequence for the pair $(X \times Y, X \vee Y)$:
+\\\begin{center}
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes,row sep=3em,column sep=2em,minimum width=2em]
+  {
+  \tilde{K}(S(X \times Y)) & \tilde{K}(S(X \vee Y)) & \tilde{K}(X \wedge Y) & \tilde{K}(X \times Y) & \tilde{K}(X \vee Y)\\
+   & \tilde{K}(SX) \oplus \tilde{K}(SY) & &  & \tilde{K}(X) \oplus \tilde{k}(Y)
+\\};
+  \path[-stealth]
+    (m-1-1) edge node [above] { } (m-1-2)
+    (m-1-2) edge node [above] { } (m-1-3)
+    (m-1-3) edge node [above] { } (m-1-4)
+    (m-1-4) edge node [above] { } (m-1-5)
+    (m-1-2) edge node [left] { $\approx$} (m-2-2)
+    (m-1-5) edge node [left] { $\approx$} (m-2-5);
+
+\end{tikzpicture}
+\end{center}
+This exact sequence can be obtained directly from the previous results. The first vertical isomorphism is due to the quotient map of $SZ \rightarrow \Sigma Z$ inducing an isomorphism by the previous lemma. We also use that $\Sigma(X \vee Y) = \Sigma X \vee \Sigma Y$. This then gives the isomorphism which is a split surjection as we can do it per coordinate by projections.
+\\The last horizontal map is also a split surjective, as we can take $(a,b) \in \tilde{K}(X) \oplus \tilde{K}(Y)$, then use the isomorphism to find corresponding points in $\tilde{K}(X \vee Y)$ and use the projection map to pull the back to $\tilde{K}(X \times Y)$. Explicitly we can send $(a,b) \mapsto p_1^*(A) + p_2^*(B)$ where $p_1$ and $p_2$ are the projections of $X \times Y$ onto $X$ and $Y$. In the same fashion, the first horizontal map splits by $(Sp_1)^* + (Sp_2)^*$.
+\\Thus we have a splitting $\tilde{K}(X \times Y) \approx \tilde{K}(X \wedge Y) \oplus \tilde{K} (X) \oplus \tilde{K}(Y)$.
+\\Recall that $\tilde{K}(X) = \ker( K(X) \rightarrow K(x_0))$. The same holds for $\tilde{K}(Y)$. Thus if we have $(a,b) \in \tilde{K}(X) \oplus \tilde{K}(Y)$, the externap product $a * b = p_1^*(a) p_2^*(B) \in \tilde{K}(X \times Y)$ has $p_1^*(A)$ restricting to zero in $\tilde{K}(Y)$ and $p_2^*(b)$ restricting to zero in $\tilde{K}(X)$. Thus $p_1^*(a)p_2^*(b)$ restricts to zero in both $K(X)$ and $K(Y)$, and therefore also in $K(X \vee Y)$. This implies that $a*b$ lies in $\tilde{K}(X \times Y)$, and the short exact sequence then implies that $a * b$ pulls back to an unique element of $\tilde{K}(X \wedge Y)$. This defines the reduced external product. We will now show that it is a restriction of the unreduced external product:
+
+\begin{center}
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes,row sep=3em,column sep=2em,minimum width=2em]
+  {
+  \tilde{K}(X) \otimes \tilde{K}(Y) & (\tilde{K}(X) \otimes \tilde{K})Y)) \oplus
+   \tilde{K}(X) \oplus \tilde{K}(Y) \oplus \mathbb{Z}\\
+  K( X \times Y)& \tilde{K}(X \wedge Y) \oplus
+   \tilde{K}(X) \oplus \tilde{K}(Y) \oplus \mathbb{Z}\\};
+  \path[-stealth]
+    (m-1-1) edge node [above] { $\approx$} (m-1-2)
+    (m-2-1) edge node [above] { $\approx$} (m-2-2)
+    (m-1-1) edge node [left] { } (m-2-1)
+    (m-1-2) edge node [left] { } (m-2-2);
+\end{tikzpicture}
+\end{center}
+Notice that the last part of both lines are equal, thus the only first two parts change. From this we conclude that the reduced external product is also a ring homomorphism.
+\\Now we will set up the last step before we have the Bott periodicity theorem. We know that $S^n \wedge X$ is the $n$-fold iterated reduced suspension $\Sigma^n X$. This in turn is a quotient of $S^n(X)$ by collapsing an $n$-disk in $S^nX$ to a point. Hence by the previous lemma the quotient map $S^nX \rightarrow S^n \wedge X$ induces an isomorphism on $\tilde{K}$.
+\\Then the reduced exernal product gives rise to a homomorphism 
+\begin{equation}
+\beta: \tilde{K}(X) \rightarrow \tilde{K}(S^2 X)
+\end{equation} where 
+\begin{equation}
+\beta(A) = (H - 1) * a
+\end{equation}
+where $H$ is the canonical line bundle over $S^2 = \mathbb{C}P^1$. 
+\begin{theorem}
+The homomorphism $\beta : \tilde{K}(X) \rightarrow \tilde{K}(S^2X)$ with $\beta(\alpha) = (H-1) * \alpha$ is an isomorphism for all compact hausdorff spaces $X$.
+\end{theorem}
+\begin{myproof}
+The map $\beta$ is the composition 
+\begin{equation}\tilde{K}(X) \rightarrow \tilde{K}(S^2)\otimes \tilde{K}(X) \rightarrow \tilde{K}(S^2X)
+\end{equation}
+where the first map $a \mapsto (H-1) \otimes A$ is an isomorphism since $\tilde{K}(S^2)$ is infiite cyclic generated by $H-1$ and the second map is the reduced external product. Then by the diagram above this is equivalent to the product theorem.
+\end{myproof}
+\begin{Cor}
+$\tilde{K}(S^{2n+1}) = 0$ and $\tilde{K}(S^{2n}) \approx \mathbb{Z}$, generated by the $n$-fold reduced external product $*^n(H-1)$.
+\end{Cor}
+\end{document}

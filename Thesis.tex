@@ -1,0 +1,99 @@
+\documentclass{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{subfiles}
+\usetikzlibrary{arrows}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{prop}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{Cor}{Corollary}
+\newtheorem{myproof}{Proof}
+
+\newtheorem{mydef}{Definition}
+\DeclareMathOperator{\Ima}{Im}
+\title{Which spheres are groups}
+\author{Stefan Franssen \\4035844}
+\usetikzlibrary{matrix}
+\begin{document}
+\maketitle
+\tableofcontents{}
+\chapter{Introduction}
+\subfile{Chapter1}
+\chapter{Algebras}
+\subfile{Chapter2}
+\chapter{Topological groups}
+\subfile{Chapter3}
+\chapter{Lie groups}
+\subfile{Chapter4}
+\chapter{$S^{n-1}$ is a topological group iff $\mathbb{R}^n$ is a ring}
+\subfile{Chapter5}
+\chapter{Vector Bundles}
+\subfile{Chapter6}
+\chapter{Topological K-theory}
+\subfile{Chapter7}
+\chapter{Complex Bott periodicity}
+\subfile{Chapter8}
+\chapter{Extending to a cohomology theory}
+\subfile{Chapter9}
+\chapter{$S^n$ is an H-space iff $n = 0,1,3,7$}
+\subfile{Chapter10}
+\chapter{Splitting principle}
+prop 2.23
+prop 2.24
+Theorem 2.25
+Example 2.26
+Proof of splitting principle
+\chapter{Possible: Real Bott periodicity and linear independent vector fields on a sphere}
+\chapter{ToDoList}
+We keep a todo list per chapter
+\section{Introduction}
+Making a more extensive introduction, show an overview of the thesis and explain what we will do per part.
+\section{Algebras}
+Show examples. Explain relationships between types of algebra.
+\\Show the proof of the Cayley-Hamilton theorem
+\\Show the there only exists up to isomorphism four alternative finite dimensional real division algebras, proof by zorn 1931?
+\\fix equation indentation
+\section{Topological groups}
+Give some more examples.
+\section{Lie groups}
+introduce lie groups, maybe before topological groups?
+\section{$S^ {n-1}$ is a topological group iff $\mathbb{R}^n$ is a ring}
+show that if $S^{n-1}$ is a topological group there is a vector space that makes the multiplication bilinear?
+\section{vector bundles}
+Depending on what all gets added, add extra theorems which will be needed later.
+\section{Topological K-theory}
+Show that multiplication is well defined.
+\\blz 25: might?? prove it later
+
+\section{Extending to a cohomology theory}
+hoofdstuk schrijven
+\section{$S^n$ is an H-space iff $n = 0,1,3,7$}
+Show naturality
+\\fix the equation indentation
+\section{complex Bott periodicity}
+\section{Splitting principle}
+write chapter
+\section{Literature list}
+Make a literature list
+\section{General work}
+Reread the books of Hatcher. Find if it contains new things to add to the thesis.
+\\Fix typos, spelling and grammar errors etc.
+\\Add more texts between the theorems/proof structure, explain their meaning in an intuitive way give more examples.
+\\Add more on the algebraic side of the story.
+\\Heel veel hence op blz 8 
+\\blz 18 goed bekijken (zei je zelf)
+\\proof 18 op blz 23 is een lastig geformuleerde zin
+\\namen van personen met hoofdletters, denk aan Hopf, Frobenius, Hurwitz
+
+\section{stack}
+Write the chapter extending to a cohomology theory.
+\\Proof of existence of Adams operations, proof of naturality must be done
+\\In bott periodicity theorem, why unique element in $\tilde{K}(X \wedge Y)$
+\\Write chapter on the splitting principle.
+\\Maybe add more info on composition algebras, proof theorem.
+\\More info on lie groups
+\\Fix literature list
+\end{document}

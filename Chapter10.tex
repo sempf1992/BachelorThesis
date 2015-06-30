@@ -1,0 +1,176 @@
+\documentclass[../Thesis.tex]{subfiles}
+\begin{document}
+\begin{lemma}
+If $\mathbb{R}^n$ is a division algebra, or $S^{n-1}$ is parallelizable, then $S^{n-1}$ is an H-space.
+\end{lemma}
+\begin{myproof}
+If we have a division algebra structure on $\mathbb{R}^n$ with two sides identity, an H-space structure on $S^{n-1}$ is given by $(x,y) \mapsto \frac{xy}{|xy|}$, which is well defined since there are no zero divisors in a division algebra, hence $xy \neq 0$ and $|.|$ is a norm thus $|xy| \neq 0$.
+\\Now suppose $S^{n-1}$ is parallelizable, with tangent vector fields $v_1,..,v_{n-1}$ which are linearly independent at each point of $S^{n-1}$. Then at each $x$ we can apply the gram Schmidt process to make the vectors $x, v_1(x),...,v_{n-1}(x)$ orthonormal. Since these vectors at $e_1$ are non zero, we can deform them to become the basis vectors $e_1, .. e_n$ by deforming vector fields near $e_1$ and possibly changing the orientation of the vector field by changing sign of $e_{n-1}$. Then we find for each $x$ an $\alpha_x$ which is a matrix which obeys the following relations: $\alpha_x \alpha_x^T = \alpha_x^T\alpha_x = 1$ and having determinant $1$. We define $\alpha_x$ to be the map which sends the standard basis vectors to $x, v_1(x), ..,v_{n-1}(x)$. This is an isometry on $\mathbb{R}^n$ and hence the map $(x,y) \rightarrow \alpha_x(y)$ defines an H space structure on $S^{n-1}$. We need to check that $(e,y) = y$ and $(x,e) = x$. We note that on the point $e$ $\alpha_e$ is the identity map, and $\alpha_x(e) = x$, since $e$ is the first basis vector.
+\end{myproof}
+\section{H-spaces have Hopf invariant $\pm 1$}
+We begin with a list of easy consequences from earlier statements which we will need later on.
+\begin{Cor}
+$\tilde{K}(S^n)$ is $\mathbb{Z}$ if $n$ is even and $0$ if $n$ is odd, and the generator for $\tilde{K}(S^{2k})$ is the $k-fold$ external product $(H-1) * ... * (H-1)$. Multiplication in $\tilde{K}(S^{2k})$ is trivial, since it is the $k-fold$ tensor product of $\tilde{K}(S^2)$, which has trivial multiplication.
+\end{Cor}
+\begin{Cor}
+The external product $\tilde{K}(S^{2k}) \otimes \tilde{K}(X) \rightarrow \tilde{K}(S^{2k} \wedge  X)$ is an isomorphism since it is an iterate of the periodicity isomorphism. 
+\end{Cor}
+\begin{Cor}
+The external product $K(S^{2k}) \otimes K(X) \rightarrow K(S^{2k} \times X)$ is an isomorphism. This follows from the previous corollary and proof that there is a equivalence between the reduced and unreduced form of the Bott periodicity. Since the external product is a ring isomorphism, the isomorphism $\tilde{K}(S^{2k} \wedge X) \approx \tilde{K}(S^{2k}) \otimes \tilde{K}(X)$ is a ring isomorphism as well. Then because $K(S^{2k})$ can be described by $\mathbb{Z}(\alpha)/(\alpha^2)$ we can deduce that $K(S^{2k} \times K^{2l})$ is $\mathbb{Z}(\alpha, \beta)/(\alpha^2, \beta^2)$ where $\alpha$ and $\beta$ are the pullbacks of generators of $\tilde{K}(S^{2k})$ and $\tilde{K}( S^{2l})$ under projections of $S^{2k} \times S^{2l}$ onto its factors. Thus we find a basis for $K(S^{2k} \times S^{2l})$ namely $\{ 1, \alpha, \beta, \alpha\beta)$.
+\end{Cor}
+Notice that the smash product of any topological space $X$ with $S^n$ is homotopic to the $n$-reduced suspension of $X: \Sigma^n X$ which in turn is homotopic to $S^n X$.
+\\Suppose $S^{2k}$ is a $H$-space for $k > 0$. Then $\mu : S^{2k} \times S^{2k} \rightarrow S^{2k}$ is its $H$-space multiplication. The induced homomorphism of rings then has the form $\mathbb{Z}(\gamma)/(\gamma^2) \rightarrow \mathbb{Z}[\alpha, \beta]/(\alpha^2, \beta^2)$. Then what is $\mu(\gamma)$?. If we take $i$ the inclusion onto the subspace $S^{2k} \times \{ e \}$ then $i$ sends $\alpha$ to $\gamma$, hence the coefficient of $\alpha$ of $\mu^*(\gamma)$ must be one. The same holds for $\beta$ if we take $i$ the projection onto the subspace $\{e \} \times S^{2k}$.
+\\Then what is $\mu^*(\gamma)^2$. Since $\mu^* $ is a homomorphism $\mu^ *(\gamma)^2 = \mu^ * (\gamma^2) = \mu^ * (0) = 0$. But $\mu^ *(\gamma) = \alpha + \beta + m \alpha\beta$ for some $m \in \mathbb{Z}$. If we compute this we get $\mu^ *(\gamma)^2 = (\alpha + \beta + m \alpha\beta)^2 = 2 \alpha \beta$. This is not zero since $\alpha$ and $\beta$ are not zero, nor is their product. This leads to a contradiction. Hence $S ^{2k}$ cannot be an $H$-space. 
+\\Now we need to show that $S^{n-1}$ cannot be an $H$ space for $n$ even and unequal to $2,4,8$. We start by constructing a map $\hat{g} : S^{2n-1} \rightarrow S^n$ for every map $g : S^ {n-1} \times S^{n-1} \rightarrow S^{n-1}$.
+\\We regard $S^{2n-1}$ as the union of two opens: $\partial D^n \times D^n \cup D^n \times \partial D^n = \partial(D^n \times D^n)$.
+\\We take $S^n$ as the union of two discs $D^n$ with their boundary identified. Then we define $\hat{g}$ on $D^n_+$ $ = |y| g(x,y/|y|)$ and on $D^n_-$ $\hat{g}(x,y) = |x| g(x/|x|,y)$. Note that $\hat{g}$ is defined on the boundary as $|x|g(x/|x|,y) = g(x,y) = |y|g(x,y/|y|)$ since $|x| = |y| =1$. When $|y|$ or $|x|$ go to zero, we notice that since $g$ is bounded, $\hat{g}$ goes to zero.
+$\hat{g}$ agrees with $g$ on $S^{n-1} \times S^{n-1}$.
+\\When we have a map $f : S^{4n-1} \rightarrow S^{2n}$, we define $C_f$ be $S^2n$ with a cell $e^{4n}$ attached by $f$. The quotient $C_f/S^{2n}$ is $S^{4n}$, and $\tilde{K}^1(S^{4n}) = \tilde{K}^1(S^{2n}) = \tilde{K}(S^{2n+1}) = 0$. Therefore the exact sequence of the pair $(C_f, S^{2n}$ becomes 
+\begin{equation}
+0 \rightarrow \tilde{K}(S^{4n}) \rightarrow \tilde{K}(C_f) \rightarrow \tilde{K}(S^{2n}) \rightarrow 0
+\end{equation}
+Let $\alpha \in \tilde{K}(C_f)$ be the image of the generator of $2n$ times the exterior product of $H-1$. Thus $*^{2n} (H-1)$. Let $\beta$ map to $*^n(H-1)$, the generator of $\tilde{K}(S^{2n})$. Then $\beta^2$ maps to $0$ in $\tilde{K}(S^{2n})$ since every square in $\tilde{K}(S^{2n})$ is zero. By exactness we have $\beta^2 = h \alpha$ for some integer $h$. This $h$ is called the Hopf invariant of $f$.
+\\$h$ is well defined since $\beta$ is unique up to addition of a factor of $\alpha$, and $(\beta + m\alpha)^2 = \beta^2 + 2m\alpha\beta$ since $\alpha^2$. And $\alpha\beta = 0$ since $\alpha$ maps to $0$ in $\tilde{K}(S^{2n})$, therefore $\alpha\beta$ maps to $0$. Therefore $\alpha\beta = k\alpha$ for some integer $k$. Multiply the equation $k\alpha = \alpha\beta$ on the right by $\beta$ we have $k\alpha\beta = \alpha\beta^2 = \alpha h \alpha = h\alpha^2$ and this is zero since $\alpha^2 = 0$. Thus $k\alpha\beta = 0$. After we divide by $k$ we see that $\alpha\beta = 0$. 
+\begin{lemma}
+If $g : S^{2n-1} \times S^{2n-1} \rightarrow S^{2n-1}$ is a $H$-space multiplication, then the associated map $\tilde{g}: S^{4n-1} \rightarrow S^{2n}$ has Hopf invariant $\pm 1$.
+\end{lemma}
+
+\begin{myproof}
+We begin by constructing a commutative diagram. Let $f = \hat{g}$. By the way we defined $f$ it is natural to see the characteristic map $\Phi$ of the $4n$-cell of $C_f$ as a map of the pair $(D^{2n} \times D^{2n}, \partial(D^{2n} \times D^{2n}))$ to the pair $(C_f, S^{2n})$. This induces a map $\Phi^*$ in $K$-theory. Also notice the isomorphism between
+$\tilde{K}(D^{2n} \times \{e\}, \partial D^{2n} \times \{ e\} ) \otimes \tilde{K}(\{e\} \times D^{2n}, \{e\} \times \partial D^{2n})$ and $\tilde{K}(D^{2n}\times D^{2n}, \partial D^{2n} \times D^{2n}) \otimes \tilde{K}(D^{2n} \times D^{2n}, D^{2n} \times \partial D^{2n})$, since everything in the second respectively first $D^{2n}$ factor gets collapsed to zero.
+ \\\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes,row sep=3em,column sep=2em,minimum width=2em]
+  {
+     \tilde{K}(C_f) \otimes \tilde{K}(C_f) & \tilde{K}(C_f)\\
+     \tilde{K}(C_f, D^{2n}_-) \otimes \tilde{K}(C_f, D^{2n}_- & \tilde{K}(C_f, S^{2n}) \\     
+     \tilde{K}(D^{2n}\times D^{2n}, \partial D^{2n} \times D^{2n}) \otimes \tilde{K}(D^{2n} \times D^{2n}, D^{2n} \times \partial D^{2n}) & \tilde{K}(D^{2n} \times D^{2n}, \partial(D^{2n} \times D^{2n})) \\
+     \tilde{K}(D^{2n} \times \{e\}, \partial D^{2n} \times \{ e\} ) \otimes \tilde{K}(\{e\} \times D^{2n}, \{e\} \times \partial D^{2n})\\};
+  \path[-stealth]
+    (m-1-1) edge node [above] { } (m-1-2)
+    (m-2-1) edge node [right] {$\approx$} (m-1-1)
+    (m-2-1) edge node [below] { } (m-2-2)
+    (m-2-2) edge node [right] { } (m-1-2)
+    (m-2-2) edge node [left ] {$\Phi^*$} (m-3-2)
+    (m-2-2) edge node [right] {$\approx$} (m-3-2)
+    (m-2-1) edge node [left ] {$\Phi^* \otimes \phi^*$} (m-3-1)
+    (m-3-1) edge node [right] {$\approx$} (m-4-1)
+    (m-3-1) edge node [above] { } (m-3-2)
+    (m-4-1) edge node [above] {$\approx$} (m-3-2);
+\end{tikzpicture}    
+The horizontal maps are the product maps. The diagonal map is the external product $\tilde{K}(S^{2n}) \otimes \tilde{K}(S^{2n}) \rightarrow \tilde{K}(S^{4n})$ which is an isomorphism by iteration of the Bott periodicity isomorphism.
+\\Since $f$ is a $H$ space multiplication, $\Phi$ restricts to a homeomorphism from $D^{2n}\{e\}$ onto $D^{2n}_-$ and from $\{e\} \times D^{2n}$ onto $D^{2n}_+$. Now we take an element $\beta \otimes \beta$ in the upper left group in the diagram. This gets mapped to a generator in the bottom row of the diagram, since $\beta$ restricts to a generator of $\tilde{K}(S^{2n})$ by definition of $\beta$. Thus $\beta\otimes \beta$ gets send to a generator of $\tilde{K}(C_f, S^{2n})$. If we look at the horizontal map in the first row, this is equal to the vertical map from $\tilde{K}(C_f, S^{2n})$ after going through the diagram. Since this diagram commutes, $\beta\otimes \beta$ gets send to $\pm \alpha$ where $\alpha$ is the image of a generator of $\tilde{K}(C_f, S^{2n})$. Thus we have $\beta^2 = \pm \alpha$. Thus the Hopf invariant of $f$ is $\pm 1$ since this is the coefficient in front of $\alpha$ when we look at the image of $\beta^2$. 
+\end{myproof}
+\begin{theorem}
+There exists a map $f: S^{4n-1} \rightarrow S^{2n}$ of Hopf invariant $\pm 1$ only when $n = 1, 2, 4$.
+\end{theorem}
+In the next section we will show the exists of so called Adams operations. They have the following properties
+\begin{itemize}
+\item $\phi^k f^* = f^* \phi^k$ for all maps $f : X \rightarrow Y$.
+\item $\phi^K(L) = L^k$ if $L$ is a line bundle
+\item $\phi^k\circ\phi^l = \phi^{kl}$
+\item $\phi^p (x) = x^p mod p$ for $p$ prime.
+\end{itemize}
+Then there is an extra property which states that that $\phi^k : \tilde{K}(S^{2n}) \rightarrow \tilde{K}(S^{2n})$ is multiplication by $k^n$. This is a proposition we will prove in the next chapter.
+\begin{myproof}
+We have $\alpha, \beta \in \tilde{K}(C_f)$. By our previous prop $\phi^k(\alpha) = k^{2n}\alpha$ since $\alpha$ is the image of a generator of $\tilde{K}(S^{4n})$. Similarly, $\phi^k(\beta) = k^n\beta + \mu_k \alpha$ for some $\mu_k \in \mathbb{Z}$. Now we use commutativity of $\phi^k\phi^l = \phi^l\phi^k$. Therefore we have
+\begin{equation}
+\phi^k\phi^l = \phi^k(l^n \beta + \mu_l\alpha) = k^nl^n\beta + (k^{2n}\mu_l + l^n\mu_k)\alpha
+\end{equation}
+and
+\begin{equation}
+\phi^l\phi^k = \phi^l(k^n \beta + \mu_k\alpha) = l^nk^n\beta + (l^{2n}\mu_k + k^n\mu_l)\alpha
+\end{equation}
+Therefore we have the following relation
+\begin{equation}
+k^{2n}\mu_l + l^n\mu_k = l^{2n}\mu_k + k^n\mu_l
+\end{equation}
+This is equal to
+\begin{equation}
+k^{2n} - k^n)\mu_l = (l^{2n}-l^n)\mu_k
+\end{equation}
+By property $4$ of $\phi^2$ we have $\phi^2(\beta) = \beta^2 mod 2$. Since $\beta^2 = h\alpha$ with the Hopf invariant of $f$. The formulare $\phi^2(\beta) = 2^n\beta + \mu_2\alpha$. Thus $\mu_2 = h mod 2$. If we assume $h = \pm 1$ then $\mu_2$ is odd. If $f$ is $H$-space multiplication $\mu_2$ must be odd. Then we have $(2^{2n}-2^n)\mu_3 = (3^{2n} - 3^n)\mu_2 = 2^n(2^n-1)\mu_3 = 3^n(3^n-1)\mu_2$. Thus $2^n$ divides $3^n(3^n-1)\mu_2$. Since $3^n$ and $\mu_2$ are odd, $2^n$ must divide $3^n-1$. By the next proposition $2^n$ divides $3^n-1$ iff $n = 1,2,4$.
+\end{myproof}
+\begin{prop}
+$2^n$ divides $3^n-1$ iff $ n = 1,2 ,4$.
+\end{prop}
+\begin{myproof}
+Write $n = 2^lm$ with $m$ odd. We will find the highest power of $2$ dividing $3^n-1$ by induction on $l$.
+\\If $l = 0$ we have modulo $4$ $3^n -1 \equiv (-1)^m-1 \equiv 2$ since $m$ is odd.
+\\if $l = 1$ we have $3^{2m}-1 \equiv 1 -1 \equiv 0$ modulo $4$. Thus we have divisors. $3^{2m}-1 = (3^m-1)(3^m+1)$. The highest power of $2$ dividing the first factor is $2$ as we just showed. The highest power of $2$ dividing the second factor is $4$ since $3^m + 1 \equiv 4$ if we look modulo $8$, since even powers of $3$ are equal to $1$ mod $8$ and then odd powers are equal to $3$. We add one and get $4$.
+\\Now if we go from $l$ to $l+1$ and using $l \geq 1$, or from $n$ to $2n$ with $n$ even since $n = 2^lm$, we write $3^{2n}-1 = (3^n-1)(3^n+1)$. Then $3^n + 1 \equiv 2$ modulo $4$ since $n$ is even and even powers of three are equivalent to $1$. Thus the highest power of $2$ dividing $3^n + 1$ is $2$. Thus the highest power of $2$ dividing $3^n - 1$ is twice the highest power of $2$ dividing $3^n - 1$. 
+\\Notice that the highest power of $2$ dividing $3^n -1$ is bounded by $2^{l+2}$.
+\\Now suppose $2^n$ divides $3^n -1$ we see that the $n$ is less or equal to $l + 2$ since the highest power of $2$ dividing $3^n -1$ is bounded by $l + 2$. Thus $2^l \leq 2^l m = n \leq l + 2$. Thus $l \leq 2$, and hence $n \leq 4$.
+\\This leaves us to check the cases of $n = 1, 2, 3, 4$.
+\begin{itemize}
+\item $n = 1$: $2$ divides $2$. Factor is $1$.
+\item $n = 2$: $4$ divides $8$. Factor is $2$.
+\item $n = 3$: $8$ does not divide $26$. $26 = 3 * 8 + 2$.
+\item $n = 4$: $16$ divides $80$. The factor is $5$.
+\end{itemize}
+This proves the statement.
+\end{myproof}
+\section{Adams Operations}
+\begin{theorem}
+There exists ring homomorphisms $\phi^K: K(X) \rightarrow K(X)$ defined for all compact Hausdorff spaces $X$ and all integers $k \geq 0$ which satisfy
+\begin{itemize}
+\item $\phi^k f^* = f^* \phi^k$ for all maps $f : X \rightarrow Y$.
+\item $\phi^K(L) = L^k$ if $L$ is a line bundle
+\item $\phi^k\circ\phi^l = \phi^{kl}$
+\item $\phi^p (x) = x^p mod p$ for $p$ prime.
+\end{itemize}
+These are called Adams operations.
+\end{theorem}
+\begin{myproof}
+We will use exterior powers $\lambda^k(E)$. Exterior powers have the following properties on vector bundles:
+\begin{itemize}
+\item $\lambda^ k(E_1 \oplus E_2) = \oplus_i(\lambda^ i(E_1) \otimes \lambda^ {k-i}(E_2))$.
+\item $\lambda^0(E) = 1$
+\item $\lambda^1(E) = E$
+\item $\lambda^k(E) = 0$ if $k$ is greater than the maximum dimension of the fibers of $E$.
+\end{itemize}
+We will first characterize what we need to do:
+\\If we use property 1 and 2 of $\phi$ we see that we want $\phi^k$ of a direct sum of line bundles $\oplus_i L_i$ results in a sum $\sum_i \phi^K(L_i) = \sum_i L_i^k$, since we can use the projection map.
+\\Now we claim that there exists a polynomial $s_k$ with integer coefficients such that $L_1^K + \cdots + L_n^K = S_k(\lambda^ 1(E), \cdots, \lambda^k(E))$. We define $\phi^K(E) = s_k(\lambda^1(E), \cdots, \lambda^k(E))$.
+\\The idea for construction these polynomials is using interpolation polynomials.
+\\The first step is to show that exterior powers $\lambda^i(E)$ define a polynomial $\lambda_t(E) = \sum_i(\lambda^i(E)t^i \in K(X)[t]$. Since $\lambda^k(E) = 0$ if $K$ is greater than the dimension of the fibers of $E$ this is a finite sum, and hence a polynomial. By property $1$ the direct sum $E_1 \oplus E_2$ yields $\lambda_t(E_1 \oplus E_2) = \lambda_t(E_1) \lambda_t(E_2)$ since $\otimes$ is the multiplication operator in $K(X)$. Now let $E = L_1 \oplus \cdots L_n$. Then $\lambda_t(E) = \prod_i\lambda_t(L_i)$. Then this is $\prod_i( 1 + L_i + \sum_{k \geq 2} \lambda^k(L_i)) = \prod_i( 1 + L_i)$. The coefficient $\lambda^j(E)$ of $t^j$ in $\lambda_t(E)$ is the $j$-th elementary symmetric function $\sigma_j$ of the $L_i$, which is the sum of all products of $j$ distinct $L_i$. This yields us
+\begin{equation}
+\lambda^j(E) = \sigma_j(L_1, \cdots, L_n)
+\end{equation}
+
+If we now substitute a $L_i$ for a variable $t_i$ we get $(1 + t_1) \cdots ( 1 + t_n) = 1 + \sigma_1 + \cdots + \sigma_n$. Then we can define the newton polynomial $s_k(\sigma_1, \cdots, \sigma_n) = t_1^k + \cdots + t_n^k$. If we define $\phi^k(E)$ as stated we get
+\begin{equation}
+\phi^K(E) = S_k(\lambda^1(E), \cdots, \lambda^k(E)) \\
+          = s_k(\sigma_1(L_1, \cdots, L_n), \cdots, \sigma_k(L_1, \cdots, L_k)) \\
+          = L_1^k + \cdots + L_n^K
+\end{equation}
+\\Our next goal is verifying that this obeys all our properties for $\phi$.
+\\For the first property it is just filling in:
+\begin{equation}
+\phi^k(f^*(E)) = s_k(\lambda^1(f^*(E)), \cdots, \lambda^k(f^* (E))) \\
+               = s_k(f^*\lambda^1(E), \cdots, f^*(\lambda^k(E))\\
+               = f^* s_k ( \lambda^1(E), \cdots, f^*(\lambda^k(E))\\
+               = f^* \phi^k(E)               
+\end{equation}
+\\Now the splitting principle tells us that given a vector bundle $E \rightarrow X$ with $X$ compact Hausdorff, there is a compact Hausdorff space $F(E)$ and a map $p : F(E) \rightarrow X$ such that the induced map $p^*: K^*(X) \rightarrow K^*(F(E))$ is injective and it splits as a sum of line bundles.
+\\This allows us to prove the additivity: We can do pullbacks on $E_1$ and then on $E_2$ and then we have $\phi^k(E_1 \oplus E_2) = \phi^k(L_1 \oplus \cdots \oplus L_n) = L_1^k + \cdots + L_n^k$.
+\\Now we are going to show multiplicativity: If $E$ is the sum of line bundles $L_i$ and $E´$ is the sum of line bundles $L_j´$ then $E \otimes E´$ is the sum of line bundles $L_i \otimes L_j´$. Hence $\phi^K(E\otimes E´) = \sum_{i,j} \phi^k(L_i, \otimes L_j´ ) = \sum_{i,j} L_i^k \otimes L_j^k´ = \sum_i L_i^k \sum_jL_j´ = \phi^k(E) \phi^k(E´)$. Thus $\phi^k$ is multiplicative for vector bundles and thus also for elements on $k(X)$.
+\\Now we want to prove property $3$. If we use the splitting principle and additivity we are left in the case of line bundles, where $\phi^K(\phi^l(L)) = L^{kl} = \phi^l\phi^k(L)$.
+\\In case of property $4$ we again reduce to line bundles, and for line bundles we have $E = L_1 + \cdots + L_n$ then $\phi^p(E) = L_1^p + \cdots + L_n^p = (L_1 + \cdots + L_n)^p = E^p$ if we reduce everything modulo $p$, since the binomial coefficients will be canceld.
+\end{myproof}
+We can restrict $\phi^k$ to be a homomorphism on $\tilde{K}(X) \rightarrow \tilde{K}(X)$ by the naturality property, since $\tilde{K}(X)$ is the kernel of the homomorphism $K(X) \rightarrow K(x_0)$ for $x_0 \in X$. For the external product $\tilde{K}(X) \otimes \tilde{K}(Y) \rightarrow \tilde{K}( X \wedge Y)$ we have $\phi^k(\alpha * \beta) = \phi^k(\alpha) * \phi^K(\beta)$ since
+\begin{eqnarray}
+\phi^k(\alpha * \beta) = \phi^k( p_1^*(\alpha)p_2^*(\beta))\\
+                       = \phi^k( p_1^*(\alpha)) \phi^k(p_2^*(\beta))\\
+                       = p_1^* \phi^k(\alpha) p_2^*\phi^K(\beta))\\
+                       = \phi^k(\alpha) * \phi^k(\beta)
+\end{eqnarray}
+\begin{prop}
+$\phi^k : \tilde{K}(S^{2n}) \rightarrow \tilde{K}(S^{2n})$ is multiplication by $k$.
+\end{prop}
+\begin{myproof}
+We will proof this by induction. Notice that we have an isomorphism by the external product $\tilde{K}(S^2) \tilde{K}(S^{2n-2}) \rightarrow \tilde{K}(S^{2n})$.
+\\Consider the case $n = 1$. $\phi^k$ is additive, thus it will suffice to show $\phi^k(\alpha) = k\alpha$ for $\alpha$ of $\tilde{K}(S^2)$. We take $\alpha = H-1$ for $H$ the canonical line bundle over $S^2 = \mathbb{C}P^1$. Then $\phi^k(\alpha) = \phi^k(H-1) = \phi^k(H) - \phi^k(1) = H^k - 1$.
+\\Then we write $H$ as $1 + \alpha$. Since $\alpha^i = 0$ for $i > 1$ we can expand the binomial terms, see that that there are everywhere $\alpha^i$ terms except when $ i < 2$, thus they become zero. The coefficient for $\alpha$ is $k$, and thus we get that $H^k -1  = 1 + k\alpha -1 = k\alpha$.
+\\Now the induction step. Suppose the result holds for $\tilde{K}(S^{2n-2})$. We have $\phi^K( \alpha * \beta) = \phi^K(\alpha) * \phi^k(\beta) = k\alpha* k^{n-1}\beta = k^n(\alpha*\beta)$, where $\alpha* \beta$ is the generator of $\tilde{K}(S^{2n})$ and hence we are done.
+\end{myproof}
+\end{document}

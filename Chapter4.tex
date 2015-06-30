@@ -1,0 +1,22 @@
+\documentclass[../Thesis.tex]{subfiles}
+\begin{document}
+A lie group is just like a topological group except it is on smooth manifolds and the multiplication and inversion maps should be smooth maps. This makes some questions in this settings a whole lot easier, since smoothness is far stronger than just continuity.
+\begin{mydef}
+We call a smooth manifold $M$ a lie group if there exists a group structure on it with multiplication $m : M \times M \rightarrow M$ and inversion $\cdot^{-1}: M \rightarrow M$ which are smooth maps.
+\end{mydef}
+This gives rather strong properties for the geometry which exists on $M$. 
+\begin{lemma}
+Any lie group $G$ is parallelizable.
+\end{lemma}
+\begin{myproof}
+We need to show that $TG = G \times T_eG$. We have an induced map $(L_g)_*$ from the map $L_g$ which is defined by $L_gh = gh$. Now if we have an element at the tangent space at $g$, call it $X_g$ we can move it over the entire manifold by this rotation. Then we get $TG = G \times T_eG$ by sending $X_g$ to $(g, (L_{g^{-1}})_*X_g)$, this gives an isomorphism between $T_gG$ and $T_eG$, and hence get the required relation.
+\end{myproof}
+\section{Circles which are Lie groups}
+\begin{theorem}
+The only $n$ for which $S^n$ are lie groups are $n = 0,1,3$.
+\end{theorem}
+\begin{myproof}
+We start by noting that for $n = 0$ the statement is trivial since $S^0 = \{\pm 1\}$. Now move to the higher dimensional case. All circles are connected. Hence suppose $G$ is connected.
+\\
+\end{myproof}
+\end{document}

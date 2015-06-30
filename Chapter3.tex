@@ -1,0 +1,21 @@
+\documentclass[../Thesis.tex]{subfiles} 
+\begin{document}
+In order to answer our second question, when $S^{n}$ is a topological group, we need to define what it means to be a topological group. We will show a couple of examples of topological groups.
+\subsection*{Definition: Topological groups}
+A topological group is a group $G$, together with a topological structure on $G$ such that the groups product $m: G x G \rightarrow G$ is a continuous function, and the inverse function $x \mapsto x^{-1}$ is also continuous.
+\section{Examples of topological groups}
+\subsection{$\mathbb{R}$ is a topological group}
+We take as group multiplication the additive structure of $\mathbb{R}$ and denote it with $+$. First note that $+$ is a continuous function from $\mathbb{R} x \mathbb{R} \rightarrow \mathbb{R}$, since it is just translation by a fixed amount in either argument, and translation is continuous in $\mathbb{R}$. The inverse operation $-$ is also continuous, since if the distance between $-x$ and $-y$ is $d$, then so is the distance between $x$ and $y$. Hence both operations are continuous, and thus $\mathbb{R}$ is a topological space.
+\subsection{$\mathbb{R}^n$ is a topological group}
+We look at $\mathbb{R}^n$ as a vector space, and take addition of vectors as multiplication. This addition is continuous in both arguments, and hence it is continuous. The inverse operation $-$ is continuous by the same argument as before, namely, the distance between $x$ and $y$ is the same as the distance between $-x$ and $-y$.
+\subsection{Hilbert spaces form a topological group}
+First notice that addition is continuous and that taking $x$ to $-x$ is also continuous. Furthermore addition is associative and closed. Hence any Hilbert space $H$ is a topological group.
+\section{The spheres}
+Here we will show that the $0, 1$ and $3$ sphere form a topological group. It will turn out that these spheres are the only ones which can become a topological group. 
+\subsection{$S^0$ is a topological group}
+First note that $S^0$ is a space consisting of $2$ elements, namely $1$ and $-1$. The topology on this space is the discrete topology, namely every subset is open: $\phi, \{1\}, \{-1\}$ and $\{1, -1\}$ are all open sets in $\S^0$. Hence every map is continuous. The group operations are $m$ where $1$ is the identity and $-1$ is the self inverse element. Hence $m$ is continuous and so is the inversion map. This makes $S^0$ into a topological group.
+\subsection{$S^1$ is a topological group}
+First note that $S^1$ is the set of all the elements of distance $1$ in $\mathbb{R}^2$, or, equivalently, the set of all elements of norm $1$ in the complex numbers. These can be represented by $e^{\theta i}$. Group inversion becomes $e^{\theta i} \mapsto e^{-\theta i}$ and multiplication becomes $e^{\theta_1 i} e^{\theta_2 i} = e^{(\theta_1 + \theta_2)i}$, which are both continuous functions. Hence $S^1$ is a topological group.
+\subsection{$S^3$ is a topological group}
+Again notice that $S^3$ is the set of all elements of distance $1$ in $\mathbb{R}^4$, or equivalently, the set of all elements of norm $1$ in the quaternions.
+\end{document}

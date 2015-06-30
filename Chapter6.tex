@@ -1,0 +1,185 @@
+\documentclass[../Thesis.tex]{subfiles}
+\begin{document}
+This is a short chapter which contains the theory about complex vector bundles we need, and some general theory about vector bundles like their definition.
+\begin{mydef}
+An $n$ dimensional vector bundle over $B$ is a map $p : E \rightarrow B$ together with a real vector space structure of $p^{-1}(b)$ for each $b \in B$, such that the following condition holds: 
+\\There exists an open cover $\mathcal{U}$ with opens $u_\alpha$ such that for each $U_\alpha$ there exists a homeomorphism $h_\alpha : p^{-1} (U_\alpha) \rightarrow U_\alpha \times \mathbb{R}^n$ taking $p^{-1}(b)$ to $\{ b\} \times \mathbb{R}^n$ by a vector space isomorphism for each $b \in U_\alpha$. Such an $h_\alpha$ is called a local trivialization of the vector bundle. The space $B$ is called the base space, $E$ is the total space and the vector spaces $p^{-1}(b)$ are the fibers. If we take $\mathbb{C}$ instead of $\mathbb{R}$ we get complex vector bundles, which we will use later on. For now, we write $\mathbb{K}$ instead of $\mathbb{R}$ of $\mathbb{C}$ when results hold for both fields.
+
+\end{mydef}
+Some examples of vector bundles:
+\begin{enumerate}
+\item A trivial vector bundle is the bundle $E = B \times \mathbb{K}^n$ with $p$ the projection onto $B$.
+\item Tangent spaces of smooth manifolds form vector bundles.
+\item The normal bundle to $S^n$ in $\mathbb{R}^{n+1}$, consisting of pairs $(x,v)$ such that $V$ is perpendicular to the tangent plane to $S^n$ at $x$. This makes $E \subset S \times \mathbb{R}^{n+1}$. 
+\end{enumerate}
+\begin{mydef}
+We call two vector bundles $p_1 :E_1 \rightarrow B, p_2 E_2 \rightarrow B$ over the same base space $B$ isomorphic if there is a homeomorphism $h: E_1 \rightarrow E_2$ taking each fiber $p_1^{-1} (b)$ to the corresponding fiber $p_2^{-1}(b)$ by a linear isomorphism. We denote isomorphism of vector bundles by $E_1 \approx E_2$.
+\end{mydef}
+\begin{lemma}
+A continuous map $h :E_1 \rightarrow E_2$ between vector bundles over the same base space $B$ is an isomorphism if it takes each fiber $p_1^{-1}(b)$ to the corresponding fiber $p_2^{-1}(b)$ by a linear isomorphism.
+\end{lemma}
+\begin{myproof}
+Notice that $h$ must be bijective by the hypothesis. Thus all we have to show is that $h^{-1}$ is continuous. Since this is a local question we can restrict to an open subset $U \subset B$ over which $E_1$ and $E_2$ are trivial. We can now compose with the local trivialization since this is a homeomorphism. Thus we have to show that $h$ is locally a continuous map $U \times \mathbb{K}^n \rightarrow U \times \mathbb{K}^n$ of the form $h(x,v) = (x, g_x(v))$. Here $g_x$ is the composition from the linear isomorphisms from $x \times \mathbb{K}^n$ to $p_1^{-1}(b)$, then again from $p_1^{-1}(b)$ to $p_2(p_1^{-1}(b))$ which are both linear isomorphisms. Thus here $g_x$ is an element of the group $GL_n(\mathbb{K})$ of invertible linear transformations of $\mathbb{K}^n$, and thus $g_x$ depends continuously on $x$. This means that $g_x$ can be regarded as a $n \times n$ matrix, and its $n^2$ entries depend continuously on $x$, since $g_x^{-1} = \frac{1}{\det g_x}$ times the adjoint matrix of $g_x$. Therefore $h^{-1}(x,v) = (x, g_x^{-1}(v))$ is continuous.
+\end{myproof}
+\begin{mydef}
+We define the direct sum of two vector bundles as $E_1 \oplus E_2 = \{ (v_1, v_2)| p_1(v_1) = p_2(v_2)\}$
+\end{mydef}
+\begin{lemma}
+The direct sum of two vector bundles is again a vector bundle.
+\end{lemma}
+\begin{myproof}
+First note that if we have a vector bundle $p: E \rightarrow B$ and a subspace $A \subset B$ then $p|_A : p^ {-1} (A) \rightarrow A$ is a vector bundle over $A$.
+\\Also note that if we have base spaces $B_1, B_2$ and vector bundles $p_i : E_i \rightarrow B_i$ then the product
+\begin{equation}
+p_1 \times p_2 : E_1 \times E_2 \rightarrow B_1 \times B_2
+\end{equation} 
+is again a vector bundle, since we can make a trivialization \begin{equation}
+h_{\alpha, \beta} : p_1^{-1}(U_\alpha) \times p_2^{-1}(U_\beta) \rightarrow U_\alpha \times \mathbb{K}^n \times U_\beta \times \mathbb{K}^m
+\end{equation}
+ by setting $h_{\alpha, \beta} = h_\alpha \times h_\beta$.
+\\Then notice that $E_1 \oplus E_2$ is the restriction of $E_1 \times E_2$ over the diagonal $(b,b)$ for $b \in B$. Hence this is also a vector bundle by our observations.
+\end{myproof}
+We will now work on showing that every vector bundle has a counterpart such that their direct sum is a trivial vector bundle. Our first observation is that we can define an inner product on vector bundles. The idea is that we pull back the inner product on $\mathbb{K}^n$ to $p^{-1}(U_\alpha)$ via the trivialization. Since our space $B$ is compact Hausdorff it has a partition of unity subordinate $\phi_\beta$ to the open cover $U_\alpha(\beta)$, such that  the support of $\phi_\beta$ is contained in $U_\alpha(\beta)$. We then define our inner product 
+\begin{equation}
+\rangle v, w \langle = \sum_\beta \phi_\beta p)V_\rangle v, w \langle_{\alpha(\beta)}
+\end{equation}
+\begin{lemma}
+Let $E \rightarrow B$ is a vector bundle and $B$ be paracompact. Suppose $E_0$ is a vector subbundle, then there exists a vector subbundle $E_0^\perp \subset E$ such that $E_0 \oplus E_0^\perp = E$.
+\end{lemma}
+\begin{myproof}
+We have an inner product on $E$. Define $E_0^\perp$ to be the subspace of $E$ such that each fiber consists of all vectors orthogonal to vectors in $E_0$. Then $E_0 \oplus E_0^\perp$ is isomorphic to $E$ by sending $(v,w)$ to $v + w$. Now we need to show that $E_0^\perp$ is a vector bundle. All we have to show is that it admits local trivializations.
+\\Since trivializations are local, we can restrict ourselves to $U_\alpha$ and suppose $E = B \times \mathbb{K}^n$. $E_0$ is a vector bundle. It has dimension $m \leq n$. Thus it has $m$ independent local sections $b \mapsto (b, s_i(B))$ near each point $b_0 \in B$. 
+\\If $m < n$ then we can enlarge this set of $m$ independent local sections to a set of $n$ independent local sections $b \mapsto (b, s_i(b))$ of $E$ by choosing $s_{m+1}, .., s_n$ in the fiber $p^{-1}(b_0)$. We can now take that vector for all nearby fibers $p^{-1}(b)$ since the determinant function is continuous, and vectors are linearly independent iff $det(s_1, ..., s_n) \neq 0$. Thus they will remain independent. Now we can apply the grammschmidt orthonormalization process. This is a continuous function, hence the $s_i'$ will remain orthogonal in a neighborhood. Also notice that the first $m$ will remain a basis for $E_0$ since the first $m$ $s_i'$ values are the same if we just did the Gramm-Schmidt process on $E_0$. The sections $s_i'$ allow us to define a local trivialization $h:p^{-1}(U) \rightarrow U \times \mathbb{K}^n$ with $h(b,s_i'(b))$ equal to the i-th standard basis vector of $\mathbb{K}^n$. Notice that $h$ splits, such that $h$ carries $E_0$ to $U \times \mathbb{K}^m$ and $E_0^\perp$ to $U \times \mathbb{n-m}$.
+\end{myproof}
+We will now use this result to show the following lemma
+\begin{lemma}
+every vector bundle has an counterpart such that their sum is an trivial vector bundle
+\end{lemma}
+Suppose the result holds. Then $E$ is a subbundle of a trivial bundle, i.e. $E$ is a subbundle of $B \times \mathbb{R}^n$. Then by the previous lemma we have a vector bundle $E^\perp$ such that the direct sum is the trivial bundle. If we include $E$ in the trivial bundle and then project onto $\mathbb{R}^n$ we have a map $E \rightarrow \mathbb{R}^n$ that is a linear injection in each fiber. We can now reverse this. We build a map $E \rightarrow \mathbb{R}^n$ that is a linear injection. Then we will show that this map gives an embedding of $E$ in $B \times \mathbb{R}^n$.
+\begin{myproof}
+First notice that for each element $x$ in $B$ there is a open neighborhood $U_x$ of $x$ such that $E$ over $U_x$ is trivial. By Urysohns Lemma there is a map $\phi_x: B \rightarrow [0,1]$ that is $0$ outside $U_x$ and non zero at $x$. Letting $x$ vary, the sets $\phi_x^{-1}(0,1]$ form an open cover of $B$. Since $B$ is compact, we can extract a finite subcover. Let the $U_x$ and $\phi_x$ corresponding to this subcover be labeled $U_i$ and $\phi_i$. Define a map $g_i : E \rightarrow \mathbb{R}^n$ by $g_i(v) = \phi_i(p(v)) \cdot (\pi_i h_i(v))$, where $p$ is the project $E \rightarrow B$, $\pi_i$ the projection
+from $U_i \times \mathbb{R}^n$ onto $\mathbb{R}^n$, and $h_i : p^{-1}(U_i) \rightarrow U_i \times \mathbb{R}^n$. the local trivialization. This makes $g_i$ a linear injection on each fiber over $\phi_i^{-1}(0,1]$. If we make the various $g_i$ the coordinates of a map $g : E \rightarrow \mathbb{R}^N$, where $\mathbb{R}^N$ is a product of copies of $\mathbb{R}^n$, then $g$ in a linear injection on each fiber.
+\\The map $g$ is the second coordinate of a map $f : E \rightarrow B \times \mathbb{R}^N$, with $f = (p, g)$. The image of $f$ is a subbundle of the product $B \times \mathbb{R}^N$. This is since if we project $\mathbb{R}^N$ onto the $i-th$ $\mathbb{R}^n$ factor, we have the second coordinate of a local trivialization over $\phi_i^{-1}(0,1]$. This shows that $E$ is isomorphic to a subbundle of $B \times \mathbb{R}^N$, hence by preceding lemma we find a complementary subbundle $E^\perp$ such that their direct sum is isomorphic to $B \times \mathbb{R}^N$.
+\end{myproof}
+We will now define tensors of vector bundles.
+\begin{mydef}
+Let $E_1, E_2$ be vector bundles with projection $p_1, p_2$ and trivialization $h_1, h_2$. The tensor product of $E_1, E_2$ is denoted $E_1 \otimes E_2$. This is a set, formed by the disjoint union of the vector spaces $p_1(x)^{-1} \otimes p_2^{-1}(x)$. Then we will need a topology on this set. 
+\\Choose isomorphisms $h_i : p_i^{-1}(U) \rightarrow U \times \mathbb{R}^N$ for each open $U \subset B$ over which $E_1$ and $E_2$ are trivial. We define $\tau_U$ on the set $p_1^{-1}(U) \otimes p_2^{-1}(U)$ is defined by letting the fiber wise tensor product map $h_1 \otimes h_2 :p_1^{-1}(U) \otimes p_2^{-1}(U) \rightarrow U \times ( \mathbb{R}^{n_1} \otimes \mathbb{R}^{n_2})$. Note that this topology is independent of $h_i$ since $h_1$ and $h_2$ agree on overlaps, and hence the other choices are obtained by composing with isomorphisms of $U \times \mathbb{R}^{n_1}$ of the form $(x,v) \mapsto (x, g_i(x)(v))$ for continuous maps $g_i : U \rightarrow GL_{n_i}(\mathbb{R})$. Hence $h_1 \otimes h_2$ changes by composing these morphims with the tensors, and the maps $g_1 \otimes g_2$ are continuous maps $U \rightarrow U \times ( \mathbb{K}^{n_1} \otimes \mathbb{K}^{n_2})$.  When we replace $U$ by an open subset $V$, the topology on $p_1^{-1}(V) \otimes p_2^{-1}(V)$ induced by $\tau_U$ is the same as the topology $\tau(V)$, since the local trivializations agree on the overlap between $U$ and $V$. Hence we get a well defined topology on $E_1 \times E_2$, which makes this a vector bundle over $B$.
+\end{mydef}
+We have now shown the properties we need to define the functor $K(\cdot)$. If you wish you can go forward to the next chapter on Topological K-theory. The last part of this chapter proves additional statements which will be used to show the last property of functors: if we have a map $f : X rightarrow Y$ we get a map between $K(Y)$ and $K(X)$. In this chapter we will be doing the vector bundle side of the statements. In the next chapter we will use these theorems to show that the result hold for $K$.
+
+\begin{prop}
+Given a map $f: A \rightarrow B$ and a vector bundle $p: E \rightarrow B$, then there exists a vector bundle $p' : E' \rightarrow E$ with a map $f' : E' \rightarrow E$ taking the fiber of $E'$ over each point $a \in \alpha$ isomorphically onto the fiber of $E$ over $f(A)$, and such a vector bundle $E'$ is unique up to isomorphism.
+\end{prop}
+We call $E'$ the pullback of $E$ by $f$.
+\begin{myproof}
+We will first show the existence of a pullback of $E$ by $f$ and then show this pullback is unique up to isomorphism.
+\\We se $E´ = \{(a,v) \in A \times E | f(a) = p(v) \}$. Then we set $p'(a,v) = a$ and $f'(a,v) = v$. Then $fp'= p f'$, since they both send $(a,v)$ to $f(a) = p(v)$. Thus we have a commutative diagram:
+\\
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
+  {
+     E & E' \\
+     B & A \\};
+  \path[-stealth]
+    (m-1-2) edge node [above] {$f^*$} (m-1-1)
+    (m-1-1) edge node [left] {$p$} (m-2-1)
+    (m-2-2) edge node [below] {$f$} (m-2-1)
+    (m-1-2) edge node [right] {$p^*$} (m-2-2);
+\end{tikzpicture}    
+Now we need to show that $E'$ is a vector bundle. We need to show it has a trivialization functions. We will show that $E'$ is homeomorphic to a vector bundle. First we look to the graph of $f$: $\Delta_f = \{ (a, f(a))\}$. Then $p'$ factors as maps from $E'\rightarrow \Delta_f \rightarrow A$
+\end{myproof}
+
+
+
+
+
+\begin{prop}
+This induced map $f^*$ commutes with direct sum and tensoring.
+\end{prop}
+
+\begin{myproof}
+Notice that if $E = E_1 \oplus E_2$ we can find $E_1´ $ and $E_2´$, and then $E´ = E_1´  \oplus E_2´$. The same holds for tensoring. Thus $f^ *$ commutes with direct sum and tensoring.
+\end{myproof}
+
+
+
+
+\begin{theorem}
+Given a vector bundle $p: E \rightarrow B$ and homotopic maps $f_0, f_1: A \rightarrow B$, then the induced vector bundles $f_0^*(E)$ and $f_1^*(E)$ are isomorphic if $A$ is paracompact.
+\end{theorem}
+\begin{myproof}
+This theorem is a special case of the next proposition.
+\end{myproof}
+
+
+
+
+
+
+\begin{prop}
+The restrictions of a vector bundle $E : \rightarrow X \times I$ over $X \times \{ 0\}$ and over $X \times \{ 1\}$ are isomoprhic if $X$ is compact Hausdorff.
+\end{prop}
+
+\begin{lemma}
+A vector bundle $p :E \rightarrow X \times[a,b]$ is trivial if it restrictions over $ X \times [a,c]$ and $ X \times [c,b]$ are both trivial for some $c \in (a,b)$. 
+\end{lemma}
+
+\begin{myproof}
+We define the restrictions $E_1 = p^{-1}(X \times [a,c])$ and $E_2 = p^{-1}(X \times [c,b])$ and we have isomorphisms $h_1$ and $h_2$ the restrictions to $[a,c]$ and $[c,b]$. These isomorphisms need not agree on $p^{-1}( X \times \{ c\})$, but if we replace $h_2$ by the isomorphism $X \times [c,b] \times \mathbb{K}^n \rightarrow X \times [c,b] \times \mathbb{K}^n$ on which each slice $X \times \{x\} \times \mathbb{K}^n$ is given by  $h_1h_2^{-1} : X \times \{ c \} \times \mathbb{K}^n$. Once $h_1$ and $h_2$ agree on $E_1 \cap E_2$ they define a trivialization of $E$.
+\end{myproof}
+
+\begin{lemma}
+For a vector bundle $p : E \rightarrow X \times I$ there exists an open cover $U_\alpha$ of $X$ so that each restriction $p^{-1}(U_\alpha \times I \rightarrow U_\alpha \times I$ is trivial. 
+\end{lemma}
+
+\begin{myproof}
+This is because for each $x \in X$ we can find open neighborhoods $U_{x,1}, ... U_{x,k}$ in $X$ and a partition $0 = t_0 < t_1 < ... < t_k = 1$ of $[0,1]$ such that the bundle is trivial over $U_{x,i} \times [t_{i-1},t_i]$ using compactness of $[0,1]$. Then by previous lemma the bundle is trivial over $U_\alpha \times I$ where $U_\alpha = U_{x,1} \cap ... \cap U_{x,k}$.
+\end{myproof}
+
+\begin{myproof}
+We will now prove the proposition. We can take an open cover $\{U_\alpha\}$ so that $E$ is trivial over each $U_\alpha \times I$. We extract a finite subcover of $X$. We relabel them as $U_1, ..., U_m$. As shown before there is a corresponding partition of unity by functions $phi_i$ with the support of $\phi_i$ contained in $U_i$. Define $\psi_i = \sum_{j = 0}^i \phi_j$. Let $X_i$ be the graph of $\psi_i$. Then we can restrict $p_i : E_i \rightarrow X_i$ be the restriction of the bundle $E$ over $X_i$. Since $E$ is trivial over $U_i \times I$ the natural projection homeomorphism $X_i \rightarrow X_{i-1}$ lifts to a homeomorphism $h_i : E_i \rightarrow E_{i-1}$ which is the identity outside $p^{-1}( U_i \times I)$ and which takes each fiber of $E_i$ isomorphically onto the corresponding fiber of $E_{i-1}$. Explicitly, on points in $p^{-1}(U_i \times I) = U_i \times I \times \mathbb{K}^n$ we let $h_i(x, \psi_i(x), v) = (x, \psi_{i-1})(x), v)$. The composition $h = h_1h_2...h_m$ is then a isomorphism from the restriction of $E$ over $X \times \{1\}$ to the restriction over $ X \times \{0\}$.
+
+\end{myproof}
+
+
+
+
+
+\begin{Cor}
+A homotopy equivalence $f: A \rightarrow B$ of paracompact spaces induces a bijection $f^*$ between the sets of all $\mathbb{K}$ vector bundles over $A$ and $B$.
+\end{Cor}
+\begin{myproof}
+If $g$ is a homotopy inverse of $f$ then $f^*g^* = 1^* = 1$ and $g^*f^* = 1^* = 1$, hence we have that $f^*$ is a bijection with inverse $g^*$.
+\end{myproof}
+\begin{prop}
+If $p : E \rightarrow B$ is a fiber bundle whose fiber $F$ and base $B$ are both finite cell complexes, then $E$ is also a finite cell complex, whose cells are products of cells in $B$ with cells in $F$.
+\end{prop}
+\begin{myproof}
+We will use induction. 
+Suppose $B$ is a cell complex with only $1$ cell. Then $p^{-1}(B) = e^n \times F$, which is a finite cell complex, since $F$ is a finite cell complex, and we can make $e^n \times F$ by taking the $e^m$ cells in $F$ and replacing them by $e^{n+m}$ cells, and the attaching maps are $(id,p)$ where $p$ is the attaching map in $F$.
+\\Now suppose $B$ is obtained from a subcomplex $B'$ by attaching an n-cell $e^n$. We assume that $p^{-1}(B')$ is a finite cell complex.  If $\Phi : D^n \rightarrow B$ is a characteristic map for $e^n$ then the pullback bundle $\Phi^* (E) \rightarrow D^n$ is a product since $D^n$ is contractable. Since $F$ is a finite cell complex, this means that we may obtain $\Phi^*(E)$ from its restriction of $S^{n-1}$ by attaching cells. Hence we may obtain $E$ from $p^{-1}(B')$ by attaching cells.
+\end{myproof}
+
+The next goal is to define exterior powers for vector bundles. An exterior power $\lambda^k(V)$ for vector spaces $V$ is constructed as follows:
+\\First we take the $k$-fold tensor product. This yields $V \otimes \cdots \otimes V$.
+\\In this space we have a subspace generated by $v_1 \otimes \cdots \otimes v_k - sign(\sigma) v_{\sigma_1} \otimes \cdots \otimes v_{\sigma_v}$ where $\sigma$ is a permutation of the elements $\{1, .., k\}$.
+\\Note that if $V$ has dimension $n$ then $\lambda^k(V)$ has dimension $\binom{n}{k}$.
+\\We will locally do the same for the exterior products of vector bundles. This will yield the set $E$ which we will then endow with a topology via local trivialisations in the same way as for tensor products.
+\begin{mydef}
+The exterior product of a vector bundle is the set $E$ formed by first taking the disjoint union of all $\lambda^k(p^{-1}(x)$, i.e. pointwise exterior product. Then we use the same construction as for tensors products to create a trivialization for this set $E$, and via this route we also are able to endow $E$ with a topology.
+\end{mydef}
+In order to show that tensor product had a well defined topology we used that the tensor product $\phi \otimes \psi$ depended continuously on $\phi$ and $\psi$ for $\phi, \psi$ linear maps. We will need to show this also holds for $\lambda$
+\begin{lemma}
+Given a linear map $\phi : \mathbb{R}^n \rightarrow \mathbb{R}^n$, we have a linear map $\lambda^k(\phi) : \lambda^k(\mathbb{R}^n) \rightarrow \lambda^k(\mathbb{R}^n)$ which depends continuously on $\phi$.
+\end{lemma}
+\begin{myproof}
+Since $\phi$ is a linear map it induces a map on the $k$-fold tensor of $\mathbb{R}^n$. Then we take the quotient. Thus our map $\tilde{\psi}$ is the quotient map of a $k$ fold tensor of a map $\psi$ by itself, which is continuous.
+\end{myproof}
+We will end this chapter with an example:
+\section{Bundles over $S^N$}
+The $n$-sphere $S^n$ may be covered by two open discs $U_1$ and $U_2$. The intersection is homotopy-equivalent to $s^n-1$. Any bundle $E \rightarrow S^n$ with fiber $V = \mathbb{C}^k$ is trivial when restricted to $U_1$ and $U_2$, since open disks are contractable. If we look from a gluing point of view, $E$ is fully determined by the homotopy class of the transition function $g : S^{n-1} \rightarrow GL(V)$.
+\\If $n = 1$, this set contains a single element, since $GL(V)$ is path connected. Thus every complex vector bundle over $S^1$ is trivial.
+\\When $n = 2$, the set of all homotopy classes of maps from $S^{n-1} \rightarrow GL(V)$ is the same as the fundamental group, which is $\mathbb{Z}$ for any $V$. This is due to $GL(k, \mathbb{C})$ being connected.
+\\In general, if $n > 1$ the set of homotopy classes from $S^{n-1} \rightarrow GL(V)$ is the $n-1$-th homotopy group of $GL(V)$.
+\end{document}

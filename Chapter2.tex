@@ -1,0 +1,184 @@
+\documentclass[../Thesis.tex]{subfiles}
+\begin{document}
+We start by introducing the definitions of an algebra, and some theorems about algebras over the real field. Then we start our work on the first classification theorem. This is the Frobenius classification theorem which states that all associative real division algebras are isomorphic to either $\mathbb{R}, \mathbb{C}, \mathbb{H}$. After this is done we introduce our next concept which allows us to classify more division algebras. We will introduce the concept of composition algebras, and then classify all composition algebras over a field with characteristic not $2$. This work is highly related to the following question which has historically been important:
+\\Let $k$ be a field with characteristic other than $2$. Let $x_i \in k$, for which $n$ does the following equation
+\begin{equation}
+\sum_{i = 1}^nx^2_i)(\sum_{i=1}^ny_i^2) = \sum_i^n z_i^2
+\end{equation}
+hold for all $x_i, y_i \in k$ and $z_i$ a linear combination of $\{x_iy_j|1 \leq i,j \leq n \}$.
+
+\section{Algebra}
+\begin{mydef}
+An algebra $A$ over a field $F$ is a vector space over $F$ together with a bilinear product $m$.
+\end{mydef}
+We can talk about associativity of $m$. 
+\begin{mydef}
+If $m$ is associative we call $A$ an associative algebra.
+\end{mydef}
+In the same fashion we can have an identity for the bilinear map $m$.
+\begin{mydef}
+We call an algebra $A$ unital if there exists an identity $e$ such that $m(x,e) = m(e,x) = x$ for all $x$.
+\end{mydef}
+\begin{lemma}
+Any associative unital algebra $A$ is a ring.
+\end{lemma}
+\begin{myproof}
+Notice that the vector structure provides an addition operator $+$, and by bilinearity $m$ right- and left-distributes over $+$. There exists an identity and the multiplication is associative. Thus $A$ obeys the ring axioms.
+\end{myproof}
+We can have maps between two algebras $A$ and $B$. This allows us to talk about homomorphisms between algebras:
+\begin{mydef}
+Given two algebras $A, B$ over a field $F$, a $F$-algebra homomorphism is an $F$-linear map $f: A \rightarrow B$ such that $f(xy) = f(x)f(y)$ for all $x,y \in A$.
+\end{mydef}
+\begin{mydef}
+A $F$-algebra isomorphism is a bijective $F$-algebra homomorphism.
+\end{mydef}
+On an algebra we can have a norm. 
+\begin{mydef}
+A norm on an algebra is a function which obeys the following relations:
+\begin{itemize}
+\item $|x| = 0 \Leftrightarrow x = 0$.
+\item $|xy| = |x| |y|$ for all $x, y$.
+\item $|x + y| \leq |x| + |y|$ for all $x, y$.
+\end{itemize}
+\end{mydef}
+
+\subsection{Examples of algebras}
+We have some familiar examples of algebras. We note without proof the following:
+\begin{itemize}
+\item $\mathbb{R}$ with the real product.
+\item $\mathbb{R}^2 = \mathbb{C}$ with the complex product.
+\item $\mathbb{R}^ 4$ with the quaternionic product.
+\item $\mathbb{R}^ 8$ with the product of the Cayley octonions.
+\item $\mathbb{R}^n$ with the piecewise product $(x_1,..,x_n) \cdot (y_1,...,y_n) = (x_1y_1,...,x_ny_n)$.
+\end{itemize}
+
+\subsection{Subalgebras and ideals}
+\begin{mydef}
+A subalgebra $B$ of an algebra $A$ is a linear subspace $B$ such that the product of any two elements of $B$ is again an element of $B$. Thus a subalgebra is a subset of elements that is closed under addition, multiplication and scalar multiplication.
+\end{mydef}
+We can also define left and right ideals $I$. They have a somewhat stronger property that multiplication by any element of the algebra with an element in $I$ is again an element of $I$.
+\begin{mydef}
+An left/right ideal of an $F$-algebra $A$ is a linear subspace $I$ such that for all $x \in I$ we have that for all $y \in A$ we have respectively $x\cdot y \in I$ or $y \cdot x \in I$.
+\end{mydef}
+Notice that every left or right ideal is a subalgebra. We speak of an ideal if the space is both a left and right ideal.
+\section{Operations on algebras}
+If we have two algebras $A,B$ or $A$ and an ideal $I$ of $A$ we can create other algebras from them.
+\\We can compute the quotient algebra $A/I$. This quotient has again a bilinear multiplication $m$ on a vector space.
+\\Direct products of $A$ and $B$ is again an algebra since we can define $m((\alpha_1,\beta_1), (\alpha_2,\beta_2))$  as$ (m_A(\alpha_1,\alpha_2), m_B(\beta_1, \beta_2))$.
+\\tensor products of algebras form again an algebra since we can define $(\alpha_1 \otimes \beta_1)(\alpha_2 \otimes \beta2) = (\alpha_1\alpha_2) \otimes (\beta_1\beta_2)$.
+\section{Division algebras}
+We begin with the definition of an division algebra.
+\begin{mydef}
+A division algebra $D$ is an algebra that does not only contain zero, and for every non zero elements $a,b \in D$ there exists precisely one element $x \in D$ with $a = bx$ and precisely one element $y \in D$ with $a = yb$.
+\end{mydef}
+\begin{lemma}
+If $A$ is an associative algebra, then $A$ is a division algebra if and only if there exists a non zero identity and every non zero element $a$ has a multiplicative inverse.
+\end{lemma}
+
+MOAR THEOREMZ
+\subsection{Frobenius theorem}
+We will require the Cayley-Hamilton theorem before we prove the main theorem of this section.
+
+\begin{theorem}
+The Cayley-Hamilton theorem states that for every square matrix $M$ over a commutative ring $R$ satisfies its own characteristic polynomial $p$, i.e. $p(m) = 0$.
+\end{theorem}
+
+
+With this theorem we will prove the next theorem which classifies the associative finite dimensional division algebras.
+\begin{theorem}
+
+If $A$ is a finite dimensional associative division algebra of the real numbers. Then $A$ is isomorphic to one of the following: $\mathbb{R}, \mathbb{C},\mathbb{H}$. 
+\end{theorem}
+\begin{Cor}
+If $A$ is a finite dimensional associative commutative division algebra of the real numbers, then $A$ is isomorphic to $\mathbb{R}$ or $\mathbb{C}$.
+\end{Cor}
+\begin{myproof}
+We have a natural inclusion of $\mathbb{R}$ in $A$ since $m$ is bilinear over $\mathbb{R}$, and we have an identity element $e$. Then $m(\lambda,e)$ is a natural inclusion of $\mathbb{R}$ if we let $\lambda$ vary over $\mathbb{R}$. Hence we can speak of $\mathbb{R} \subset A$.
+\\We first consider the elements such that their square is a non positive real number, i.e.: $V = \{ z| z^2 \in \mathbb{R}_\leq \}$.We will show that this set has codimension $1$ and that $D = \mathbb{R} \oplus V$.
+\\Let $m$ be the dimension of $D$. Fix $\alpha \in D$. We can see $\alpha$ as an linear operation of a vector space $m(\alpha,\cdot)$. Then $\alpha$ has a characteristic polynomial $p(x)$. By the fundamental theorem of algebra this polynomial can be written as a product of $(x- z_j)$ with $z_j \in \mathbb{C}$. We make a distinction if a root of this polynomial is in $\mathbb{R}$ or in $\mathbb{C}-\mathbb{R}$. We then get:
+
+\begin{equation}
+p(x) = (x- t_1)..(x-t_r)(x - z_1)(x - \bar{z_1}) .. (x - z_s)(x - \bar{z_s})
+\end{equation}
+
+By the Cayley-Hamilton theorem we know that $p(\alpha) = 0$. Since $D$ is a division algebra, it has no nilpotent elements, and thus one of the following should be zero
+\begin{itemize}
+\item $\alpha -t_j$ for some $j$. Then $\alpha = t_j$ and thus real.
+\item $(\alpha - z_j)(\alpha - \bar{z_j})$. Then this expression forms a minimal polynomial of $\alpha$. Notice that $p(x)$ has the same zeroes as the minimal polynomial of $\alpha$. Since $p(x)$ is a characteristic polynomial of $\alpha$ it follows that $p(x) = (x - z_j)(x - \bar{z_j})^k$ for some $k \geq 1$. We can now rewrite $(x - z_j)(x - \bar{z_j}) = x^2  - 2 re(z_j) x + |z_j|^2$. The coefficient of $x^{2k-1}$ is the trace of $\alpha$ up to a sign. But we can also see that this is $Re(z_j)$. Hence the trace of $\alpha$ is zero if and only if $Re(z_j) = 0$. But this is also equivalent with $\alpha^2 = -|z_j|^2 \leq 0$. Thus $V$ is the subset for which we have that the trace is zero. Hence $V$ is a vector space, and its the kernel of a non-zero linear form. Hence $V$ has codimension $1$.
+\end{itemize}
+Thus we have concluded that there exists a vector space $V$ such that this is a codimension $1$ vector space, and we can form $D = \mathbb{R}\oplus V$.
+\\We will now define an inner product on $V$:
+\\Define $\langle \alpha, \beta \rangle = \frac{-ab - ba}{2}$ for $\alpha, \beta \in V$. We will show that this is a positive definite bilinear symmetric real form. First we will show it is real. Since $V$ is a vector space, $\alpha + \beta$ is in $V$. Since for any element in $V$ their square is a real number, which is smaller or equal to zero. Then $(\alpha + \beta)^2 - \alpha^2 - \beta^2 = ab + ba$, hence $ab + ba$ is the sum of real numbers, and thus real. Also $\langle \alpha, \alpha \rangle = -\alpha^2$ which is non negative and only zero if $\alpha = 0$. Furthermore it is bilinear, and hence it is an inner product on $V$.
+\\Let $W$ be a subspace of $B$ that generates $D$, and that is minimal with this property. We can chose an orthonormal basis for $V$ since we have an inner product, hence can we talk about lengths and angles. We will label the elements of this basis as $e_1, .., e_n$. If we use $-1$ times the inner product we find that these basis elements obey the following relationships:
+\begin{equation}
+e_i^2 = -1
+\end{equation}
+
+\begin{equation}
+e_ie_j = - e_ie_j
+\end{equation}
+\begin{itemize}
+\item If $n = 0 $ then $V$ contains only zero and thus $D = \mathbb{R}$.
+\item If $n = 1 $ then $V$ contains one element $e_1$, and then $D$ is generated by $1$ and $e_1$ with $e_1^2 = -1$. Hence we can identify $e_1$ with $i$ and see that $D$ is isomorphic to $\mathbb{C}$.
+\item if $n = 2$ then $e_1^2 = e_2^2 = -1$ and $e_1e_2 = -e_2e_1$. This is a basis for the quaternions hence in this case $D$ is isomorphic with $\mathbb{H}$.
+\item if $n > 2$ then we can define $u = e_1e_2e_n$. Then $u^2 = e_1e_2e_n e_1 e_2e_n = -e_ne_2e_1e_1e_2e_n = 1$. Hence we can write $0 = u^2 -1 = (u-1)(u+1)$. Since there are no zero divisors we see that $u = \pm 1$ and hence $e_n = \pm e_1e_2$. Hence we can remove $e_n$ and keep a generating basis. Thus this basis was not minimal. Thus we cannot have $n >2$.
+\end{itemize}
+\end{myproof}
+\section{Normed division algebras}
+A normed division algebra is, as you might expect, an division algebra which also has a norm. We note that from our list of examples the first three are division rings, and they all have a norm endowed, the standard euclidean norm on $\mathbb{R}^n$.
+\section{composition algebras}
+In order for the thesis we restrict the following definition to fields with characteristic not equal to $2$, since the mayor goal of this statement is to show the Hurwitz theorem, and this is trivially false in fields of characteristic $2$.
+\begin{mydef}
+A composition algebra $A$ is an unital algebra over a field $F$ with characteristic unequal to $2$, together with a nondegenerate quadratic form which satisfies $N(xy) = N(x)N(y)$. We will refer to the norm on $A$ as a reference to $N$, since $N$ is a norm.
+\end{mydef}
+Note that we can recover an inner product which generates this norm by $\langle x, y \rangle = \frac{N(xy) - N(X) - N(Y)}{2}$, which is properly defined since $2$ is non zero.
+\subsection{Classification of all composition algebras}
+\begin{theorem}
+Let $A$ be a composition algebra over a field $F$. Then $A$ is a quadratic alternative algebra that satiesfies the moufang identities. Moreover, it only exists for dim $A = 1,2,4,8$, and they obey the following properties
+\begin{center}
+
+\begin{tabular}{c|c|c}
+dim $A$ & commutative & associative\\
+\hline
+1 & yes & yes\\
+2 & yes & yes\\
+4 & no & yes\\
+8 & no & no
+\end{tabular}
+\end{center}
+\end{theorem}
+\subsection{Hurwitz theorem}
+Hurwitz theorem is a theorem about the (non)existance of solutions for the Hurwitz problem.
+\begin{theorem}
+Let $k$ be a field with characteristic other than $2$. The only values of $n \in \mathbb{N}-\{0\}$ for which the next equation hold are $1,2,4,8$:
+\begin{equation}
+\sum_{i = 1}^nx^2_i)(\sum_{i=1}^ny_i^2) = \sum_i^n z_i^2
+\end{equation}
+holds for all $x_i, y_i \in k$ and $z_i$ a linear combination of $\{x_iy_j|1 \leq i,j \leq n \}$
+\end{theorem}
+Note that if we allowed for fields of characteristic two, this statement is trivially true, since the sum of squares is the square of the sums.
+\begin{myproof}
+We will show existance. 
+\\In the case of $n = 1$ the statement is trivial. 
+\\In the case $n = 2$ we take $z_1 = x_1y_1 + x_2 y_2$ and $z_2 = x_1y_2-x_2y_1$
+\\In the case $n = 4$ we have the following $z_i$
+\begin{eqnarray}
+z_1 = x_1y_1 - x_2y_2 - x_3y_3 - x_4y_4\\
+z_2 = x_1y_2 + x_2y_1 + x_3y_4 - x_4y_3\\
+z_3 = x_1y_3 - x_2y_4 + x_3y_1 + x_4y_2\\
+z_4 = x_1y_4 + x_2y_3 - x_3y_2 + x_4y_1\\
+\end{eqnarray}
+And in the last case when $n = 8$ we take
+\begin{eqnarray}
+z_1 = x_1y_1 - x_2 y_2 - x_3y_3 - x_4y_4 - x_5y_5 - x_6y_6 - x_7y_7 - x_8y_8\\
+z_2 = x_1y_2 + x_2y_1 + x_3y_4 - x_4y_3 + x_5y_6 + x_6y_5 + x_7y_8 - x_8y_7\\
+z_3 = x_1y_3 + x_2 y_4 + x_3y_1 + x_4y_2 x_5y_7 - x_6y_8 + x_7y_5 + x_8y_6\\
+z_4 = x_1y_4 + x_2y_3 - x_3y_2 + x_4y_1 + x_5y_8 + x_6y_7 - x_7y_6 + x_8y_5\\
+z_5 = x_1y_5 - x_2y_6 - x_3y_7 - x_4y_8 + x_5y_1 + x_6y_2 + x_7y_3 + x_8y_4\\
+z_6 = x_1y_6 + x_2y_5 + x_3y_8 - x_4y_7 - x_5y_2 + x_6y_1 - x_7y_4 + x_8y_3\\
+z_7 = x_1y_7 -x_2y_8 + x_3y_5 x_4y_6 - x_5y_3 + x_6y_4 + x_7y_1 - x_8y_2\\
+z_8 = x_1y_8 + x_2y_7 - x_3y_6 + x_4y_5 - x_5y_4 - x_6y_3 + x_7y_2 + x_8y_1\\
+\end{eqnarray}
+Now suppose we have another $n$ for which this holds. Then we can make an $n$ dimensional algebra over $F$, and define the quadratic form to be $\sum_{i = 1}^ n x_i^2$. Then we have an $n$ dimensional composition algebra, which is impossible.
+\end{myproof}
+\end{document}

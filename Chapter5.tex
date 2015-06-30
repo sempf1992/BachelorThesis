@@ -1,0 +1,13 @@
+\documentclass[../Thesis.tex]{subfiles}
+\begin{document}
+We will show that $S^{n-1}$ is a topological group if and only if $\mathbb{R}^n$ is a ring. 
+\\First suppose that $\mathbb{R}^n$ is a ring. Notice that the maps $x \mapsto a\cdot x$ and $x \mapsto x \cdot a$ are linear maps, which are continuous. Furthermore, there is an inversion map $x \mapsto x^{-1}$ for all $x \neq 0$ which is continuous. Note that $S^{n-1}$ is a subset of $\mathbb{R}^n$. Suppose $x,y \in S^{n-1}$. Then we can define $m(x,y) = \frac{x\cdot y}{|x \cdot y|}$, which is continuous. We can also define the inversion map $x \mapsto \frac{x^{-1}}{|x^{-1}|}$. This is also continuous. Further notice that $m$ is associative, since $\cdot$ is associative and the norm function obeys $|x\cdot y| = |x||y|$. Hence $S^{n-1}$ is a topological group.
+\section{$S^{n-1}$ topological group implies $\mathbb{R}^n$ ring}
+Now suppose that $S^{n-1}$ is a topological group. 
+\subsection{Multiplication}
+Suppose we want to multiply two elements $x,y$ in $\mathbb{R}^n$. We look at the line through the origin, such that $\lambda \tilde{x} = x$ and $\tilde{x}$ is an element of $S^{n-1}$, and $\lambda \in \mathbb{R}_{\geq 0}$. We can do the same for $y$. Then if we want to multiply $x$ and $y$. If one of them is zero, the result is zero. Otherwise we find $\tilde{z} = \tilde{x}\cdot \tilde{y}$. Then $\lambda_x\lambda_y \tilde{z}$ is the result of our multiplication. This is well defined, since when we project, there is always exactly one such element. 
+\subsection{Inversion}
+Suppose we want to take the inverse of $x$ in $\mathbb{R}^n - \{0\}$. We again project onto $S^{n-1}$ by setting $\lambda \tilde{x} = x$. The inverse of $x$ can be found in $\lambda^{-1} \tilde{x}^ {-1}$.
+\subsection{Addition}
+Notice that this multiplication distributes over addition, where addition is the usual pointwise addition in $\mathbb{R}^n$. Thus we have a ring structure on $\mathbb{R}^n$, proving our statement.
+\end{document}
