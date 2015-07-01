@@ -1,0 +1,3 @@
+# BachelorThesis
+
+This is the git repos for my thesis. My thesis is about the classification of division algebras. We will first discuss frobenius theorem on real associative division algebras. Then we will proof Hurwitz theorem on composition algebras. This classifies a lot of division algebras but there still might be others. We will show then that we can classify all real division algebras by using that S^{n-1} will be a hopf space when R^n is a division algebra. And we can classify when S^{n-1} is a hopf space. This is the case exactly when n = 1,2,4, 8. This thesis is currently work in progress and can contain flaws. 
