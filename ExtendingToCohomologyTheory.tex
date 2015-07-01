@@ -1,0 +1,41 @@
+\documentclass[../Thesis.tex]{subfiles}
+\begin{document}
+In the previous chapter we shown that 
+\begin{equation}
+\tilde{K}(S^2X) \rightarrow \tilde{k}(S^2A) \rightarrow \tilde{K} S(X/A) \rightarrow \tilde{K}(SX) \rightarrow \tilde{K}(SA) \rightarrow \tilde{K}(X/A) \rightarrow \tilde{K}(X) \rightarrow \tilde{K}(A)
+ \end{equation}
+is an exact sequence of groups. By definition of the graded topological K-theory we have the exact same sequence:
+\begin{equation}
+\tilde{K}^{-2}(X) \rightarrow \tilde{k}^{-2}(A) \rightarrow \tilde{K}^{-1} (X,A) \rightarrow \tilde{K}^{-1}(X) \rightarrow \tilde{K}^{-1}(A) \rightarrow \tilde{K}^0(X,A) \rightarrow \tilde{K}^0(X) \rightarrow \tilde{K}^0(A)
+ \end{equation}
+Now by the product theorem we have that $\tilde{K}^{-2}(X)$ is isomorphic to $\tilde{K}^0(X)$ by multiplying every element in $\tilde{K}^0(X)$ by $\beta$. This makes it reasonable by setting $\tilde{K}^{2i}(X) = \tilde{K}(X)$ and $\tilde{K}^{2i +1}(X) = \tilde{K}(SX)$. Then we have the following exact sequence of groups:
+\begin{center}
+ \\\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes,row sep=3em,column sep=2em,minimum width=2em]
+  {
+\  \tilde{K}^0(X,A)& \tilde{K}^0(X) & \tilde{K}^0(A) \\
+   \tilde{K}^1(X,A)& \tilde{K}^1(X) & \tilde{K}^1(A) \\
+   };
+  \path[-stealth]
+    (m-1-1) edge node [above] { } (m-1-2)
+    (m-1-2) edge node [above] { } (m-1-3)
+    
+    (m-1-1) edge node [right] {} (m-2-1)
+
+    (m-2-1) edge node [below] {} (m-2-2)
+    (m-2-2) edge node [below] {} (m-2-3)
+    
+    (m-2-3) edge node [right] {} (m-1-3);
+
+\end{tikzpicture}    
+\end{center}
+Now we can define a product between $\tilde{K}^{i}(X) \otimes \tilde{K}^{j}(Y) \rightarrow \tilde{K}^{i + j}(X \wedge Y)$. We have an external product on $\tilde{K}(X) \otimes \tilde{K}(Y)$ which goes to $\tilde{K}(X \wedge Y)$. Then if we replace $X$ by $S^iX$ and $Y$ by $S^jY$ we have our product. By our above statement  we can define $\tilde{K}^*(X)$ to be $\tilde{K}^0(X) \oplus \tilde{K}^{-1}(X)$ without losing any information. Hence we have a product of the form
+$$\tilde{K}^*(X) \otimes \tilde{K}^*(Y) \rightarrow \tilde{K}^*(X \wedge Y)$$
+We can also define a relative form of this product:
+$$\tilde{K}^*(X,A) \otimes \tilde{K}^*(Y,B) \rightarrow \tilde{K}^*(X \times Y, X \times B \cup A \times Y)$$
+We define this product by replacing $\tilde{K}^i(X/A)$ by $\tilde{K}(\Sigma^i(X/A)$. Since $X/A \wedge Y/B = (X \times Y) / (X \times B \cup A \times Y)$ we can replace this in the definition of $\tilde{K}^{i + j}(X/A \wedge Y/B)$ and get $\tilde{K}^{i + j} (X \times Y, X \times B \cup A \times Y)$
+\\We can now compose the product $\tilde{K}^*(X) \otimes \tilde{K}^*(X) \rightarrow \tilde{K}^*(X \wedge X)$ with the map $\tilde{K}^*(X \wedge X) \tilde{K}^*(X)$ which comes from the map $x \mapsto (x,x)$. This gives a multiplication on $\tilde{K}^*(X)$. This makes $\tilde{K}(X)^*$ into a ring, which extends the ring on $\tilde{K}^0(X)$. Again notice that there need not be an identity, and all other axioms are satisfied.
+\\We can also give a relative form of this product in the same way as before, $\tilde{K}^*(X,a) \otimes \tilde{K}^*(X,B) \rightarrow \tilde{K}^*(X, A \cup B)$ which comes from the diagonal map $X/(A \cup B) \rightarrow X/A \wedge X/B$. 
+Prop 2.14
+Prop 2.15
+\end{document}

@@ -1,0 +1,143 @@
+\documentclass{beamer}
+\title{Which spheres are groups and the classification of the real divison algebras}
+\author{Stefan Franssen\\4035844}
+\begin{document}
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}
+An algebra $A$ over a field $F$ is:
+\begin{itemize}
+\item A vector field over $F$
+\pause
+\item with an multiplication $\cdot$
+\pause
+\item which is bilinear
+\end{itemize}
+\pause
+\begin{theorem}
+$$x(y + z) = xy + xz$$
+$$(y + z)x = yx + zx$$
+\end{theorem}
+\pause
+\begin{theorem}
+An associative algebra is a ring.
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+A division algebra $A$ over a field $F$ is:
+\begin{itemize}
+\item A vector field over $F$
+\item with an multiplication $\cdot$
+\item which is bilinear
+\pause
+\item with an unit $e$
+\pause
+\item every nonzero element $x$ has an inverse
+\end{itemize}
+\pause
+\begin{theorem}
+An associative division algebra is a field.
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+As a first classification we have Frobenius theorem
+\begin{theorem}
+The only real associative division algebras $A$ are isomorphic to $\mathbb{R}, \mathbb{C},\mathbb{H}$
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+A proof outline:
+We have $\mathbb{R} \in A$
+\pause
+\\We can split the elements in $A$ in the vector space $\mathbb{R} \times V$.
+\pause
+\\We find an minimal set $E$ containing all the generators for $V$.
+\pause
+\\If $E$ is empty, we have something isomorphic to $\mathbb{R}$.
+\pause
+\\If $E$ contains one element, we have something isomorphic to $\mathbb{C}$
+\pause
+\\If $E$ contains two elements, we have something isomorphic to $\mathbb{H}$
+\pause
+\\If $E$ contains more than $2$ elements, use associativity to show that we can express the last element as a linear combination of the other elements, hence can find a smaller $E$.
+\end{frame}
+\begin{frame}
+Composition algebras are algebras together with a quadratic form.
+\pause
+\begin{theorem}
+The only composition algebras over $\mathbb{R}$ are isomorphic to $\mathbb{R}, \mathbb{C}, \mathbb{H}, \mathbb{O}$.
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+Another proof outline:
+\pause
+\\There is an identity element $e$.
+\pause
+\\Every nonzero element has an inverse.
+\pause
+\\We can classify all algebras by doubling.
+\pause
+\\We can only double $3$ times.
+\end{frame}
+
+\begin{frame}
+Note that we can make constructions which are like complex numbers, quaternions or octonions for any field $F$. The previous theorem generalises to
+\begin{theorem}
+The only composition algebras over a field with characteristic not equal to $2$ are isomorphic to the constructions in dimension $1,2,4,8$ extensions.
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+Problem: find $z_i$ as linear combinations of $x_j, y_k$ such that the following equality holds for all $x_i, y_i$
+$$(\sum_{i = 1}^n x_i^2)(\sum_{i = 1}^n y_i^2) = \sum_{i = 1}^n z_i^2$$
+\pause
+\begin{theorem}
+This is only possible when $n = 1,2,4,8$.
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+\begin{theorem}
+one can define an associative division algebra on $\mathbb{R}^n$ if and only if $S^{n-1}$ is a topological group
+\end{theorem}
+\pause
+\begin{theorem}
+$S^{n-1}$ is an H-space if $\mathbb{R}^n$ can be made into a division algebra
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+
+\begin{theorem}
+$S^{n-1}$ is an $H$-space if and only if $n = 1,2,4,8$
+\end{theorem}
+
+\pause
+By the previous theorem we now can find all the possible dimensions on which an division algebra can be defined.
+
+\end{frame}
+
+\begin{frame}
+Recall this theorem:
+\begin{theorem}
+The only real associative division algebras $A$ are isomorphic to $\mathbb{R}, \mathbb{C},\mathbb{H}$
+\end{theorem}
+\pause
+And the next theorem:
+\begin{theorem}
+one can define an associative division algebra on $\mathbb{R}^n$ if and only if $S^{n-1}$ is a topological group
+\end{theorem}
+\pause
+These imply
+\begin{theorem}
+
+$S^{n-1}$ is a topological group if and only if $n = 1,2,4$
+\end{theorem}
+\end{frame}
+\end{document}
