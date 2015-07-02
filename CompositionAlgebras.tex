@@ -1,0 +1,50 @@
+\documentclass[../Thesis.tex]{subfiles}
+\begin{document}
+In this chapter we will prove Hurwitz theorem. In order to do that, we will be creating a lot of machinery needed in the proof. At first we will take a closer look to the properties of the quadratic form. Then we will derive general properties of composition algebras. In the end we will use some of these properties to describe a process which creates new algebras from an existing algebra. This will turn out to generate all possible algebras. We then show this process stops after applying this doubling operation 3 times. Then we will have 4 algebras associated to $1$ field.
+\section{Quadratic forms}
+\begin{mydef}
+Given a field $K$ and a vector space $V$ over $K$, a quadratic form on $V$ is a map $N : V \rightarrow K$ satisfying
+\begin{equation}
+N(\lambda x) = \lambda^2 N(x) \forall \lambda \in K, v \in V
+\end{equation}
+and the associated map $\langle , \rangle_N : V \times V \rightarrow K$ given by
+\begin{equation}
+\langle x, y \rangle = N(x + y) - N(x) - N(y)
+\end{equation}
+is bilinear.
+\end{mydef}
+As an immediate consequence we see that $N(0) = 0$, and $\langle , \rangle$ is bilinear. For the rest of this chapter we will assume that every bilinear map is symmetric unless stated otherwise.
+\subsection{Quadratic forms on $\mathbb{R}^n$}
+We will classify all quadratic forms on $V = \mathbb{R}^{n \times 1}$. The claim is that they are given by $N(X) = x^T A x$ for some symmetric matrix $A$ and every symmetric matrix $A$ induces an symmetric form. The first step we undertake is showing that givena symmetric map $A$ we can define an composition algebra.
+\begin{equation}
+N(\lambda x) = (\lambda x) ^T A (\lambda x) = \lambda^2 x^T A x = \lambda^2 N(x)
+\end{equation}
+Hence the first property holds. Now the second property holds since
+\begin{align}
+\langle x, y \rangle &=  N( x + y) - N(x) - N(y) \\
+                     &= (x + y)^T A(x + y) - x^TAx - y^TAy\\
+                     &= x^TAx + y^TAx + y^tAx + y^TAy -x^TAx - y^TAy\\
+                     &=x^TAy + y^TAx \\
+                     &=2x^TAy
+\end{align}
+hence $\langle , \rangle$ is bilinear. Thus $N$ is an quadratic form.
+\\Now we want to show the converse. We know that for all bilinear forms $ \langle , \rangle :\mathbb{R}^{n \times 1} \times \mathbb{R}^{n \times 1} \rightarrow \mathbb{R}$ there exists a symmetric matrix $A$ such that $\langle x, y\rangle = x^TAy$. The quadratic form then is recovered from $N(x) = \frac{\langle x, x\rangle}{2}$, since $\langle x, x\rangle = N(2x) - 2N(x) = 2N(x)$.
+\\Now suppose we have an $A$ and $B$ such that $N(x) = x^TAx = x^TBx$. Then we can subtract $x^TBx$ everywhere and get $x^T(A-B)x = 0$ for all $x$. Hence $A-B = 0$ and therefore $A = B$.
+This proof immediately yields the following proposition
+\begin{prop}
+If the characteristic of $K$ is other than $2$ all quadratic forms $N$ on $V$ can be recovered from the bilinear form $\langle , \rangle$ via 
+\begin{equation}
+N(x) = \frac{1}{2}\langle x, x \rangle
+\end{equation}
+If the characteristic of $K$ is two however, $\langle x, x \rangle = 0$ for all $x \in V$
+\end{prop}
+
+\begin{myproof}
+\begin{equation}
+\langle x, x \rangle = N(2x)- 2N(x) = 2N(x)
+\end{equation}
+if the characteristic of $K$ is not $2$ then we can divide by $2$ and find the expression first claimed, otherwise we get the second claim.
+\end{myproof}
+
+We will now recall some basic definitions from linear algebra. We call two vectors $x,y \in V$ orthogonal if and only if $\langle x,y \rangle =0$. We call two subsets $U_1, U_2 \in V$ orthogonal iff all vectors in $U_1$ are orthogonal to all vectors in $U_2$.
+\end{document}
