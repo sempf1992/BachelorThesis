@@ -18,4 +18,7 @@ First note that $S^0$ is a space consisting of $2$ elements, namely $1$ and $-1$
 First note that $S^1$ is the set of all the elements of distance $1$ in $\mathbb{R}^2$, or, equivalently, the set of all elements of norm $1$ in the complex numbers. These can be represented by $e^{\theta i}$. Group inversion becomes $e^{\theta i} \mapsto e^{-\theta i}$ and multiplication becomes $e^{\theta_1 i} e^{\theta_2 i} = e^{(\theta_1 + \theta_2)i}$, which are both continuous functions. Hence $S^1$ is a topological group.
 \subsection{$S^3$ is a topological group}
 Again notice that $S^3$ is the set of all elements of distance $1$ in $\mathbb{R}^4$, or equivalently, the set of all elements of norm $1$ in the quaternions.
+\section{$\mathbb{R}^n$ ring implies $S^{n-1}$ is a topological group}
+We will show that $S^{n-1}$ is a topological group if$\mathbb{R}^n$ is a ring. 
+\\Notice that the maps $x \mapsto a\cdot x$ and $x \mapsto x \cdot a$ are linear maps, which are continuous. Furthermore, there is an inversion map $x \mapsto x^{-1}$ for all $x \neq 0$ which is continuous. Note that $S^{n-1}$ is a subset of $\mathbb{R}^n$. Suppose $x,y \in S^{n-1}$. Then we can define $m(x,y) = \frac{x\cdot y}{|x \cdot y|}$, which is continuous. We can also define the inversion map $x \mapsto \frac{x^{-1}}{|x^{-1}|}$. This is also continuous. Further notice that $m$ is associative, since $\cdot$ is associative and the norm function obeys $|x\cdot y| = |x||y|$. Hence $S^{n-1}$ is a topological group.
 \end{document}
