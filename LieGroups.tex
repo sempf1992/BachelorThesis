@@ -11,12 +11,12 @@ Any lie group $G$ is parallelizable.
 \begin{myproof}
 We need to show that $TG = G \times T_eG$. We have an induced map $(L_g)_*$ from the map $L_g$ which is defined by $L_gh = gh$. Now if we have an element at the tangent space at $g$, call it $X_g$ we can move it over the entire manifold by this rotation. Then we get $TG = G \times T_eG$ by sending $X_g$ to $(g, (L_{g^{-1}})_*X_g)$, this gives an isomorphism between $T_gG$ and $T_eG$, and hence get the required relation.
 \end{myproof}
-\section{Circles which are Lie groups}
+\section{Spheres which are Lie groups}
 \begin{theorem}
 The only $n$ for which $S^n$ are lie groups are $n = 0,1,3$.
 \end{theorem}
 \begin{myproof}
 We start by noting that for $n = 0$ the statement is trivial since $S^0 = \{\pm 1\}$. Now move to the higher dimensional case. All circles are connected. Hence suppose $G$ is connected.
-\\
+For connected Lie groups there is the following theorem: if $H^1(G) = 0$ then $H^3(G) \neq 0$. For the spheres we have $H^n(S^n) = \mathbb{Z}$ and $H^i(S^n) = 0$ if $i \neq n$. Suppose $S^n$ is a lie group. If $n = 1$ then $H^1(S^1) \neq 0$. Hence it can be a Lie group. If $n > 1$ then $H^1(S^n) = 0$. This implies that $H^3(S^n)$ must be nonzero if $S^n$ is a lie group. We see that the only moment this is true when $n = 3$. Hence the only possible Lie groups are $S^0, S^1, S^3$. These are Lie groups since we can endow them with the group structure of the elements of norm $1$ of $\mathbb{R}, \mathbb{C}, \mathbb{H}$ respectively. The multiplication and inversion maps are smooth maps in $\mathbb{R} - \{0\}, \mathbb{C} - \{ 0 \}$ and $\mathbb{H} - \{ 0\}$. In particular they are smooth when restricted to $S^0, S^1$ or $S^3$. This proves the theorem.
 \end{myproof}
 \end{document}
