@@ -7,9 +7,6 @@ In topological K-theory we develop an Functor $K$ which maps compact Hausdorff t
 \item multiplication is distributive with respect to addition: $a\cdot ( b+c) = (a\cdot b) + (a \cdot c)$ and $(b+c)\cdot a = (b\cdot a) + (c \cdot a)$
 \end{itemize}
 
-
-
-
 So first we need a abelian group for addition. After that, we need an multiplication operation which distributes over the addition. We shall show that the direct sum of vector bundles on $X$ can be made into an abelian group, and that tensoring vector bundles over $X$ defines a multiplication.
 \\Furthermore, to be a functor, morphisms from one topological space into the other should induce morphisms from one ring to the other. In this case, the morphisms from one topological space to the other is a continuous function, and the morphisms from the one ring to the other are ring homomorphisms. In other words, the following diagram commutes:\\\newline
 
@@ -71,15 +68,7 @@ We have just defined the additive structure of $K(X)$ and are going to work on t
 \end{equation}
 
 Notice that tensoring is associative. distributively follows from the definition. All we have to show is that there exists an identity. $\epsilon^1$ is the identity by $\epsilon^1 \otimes ( E - E') = \epsilon^1 \otimes E - \epsilon \otimes E'= E - E'$. By commutativity $\epsilon^1$ is the multiplicative identity. Also notice that $\epsilon^n \otimes E$ gives $n$ copies of $E$ hence we can abbreviate $\epsilon^n$ by $n$ and let $nE$ stand of $n$ copies of $E$.
-\\Now we want to show that this multiplication is well defined. Suppose $E$ and $E'$ are in the same equivalence class, and we multiply this by $E_2 - E'_2$. 
-
-
-
-
-
-
-
-As we will see in the next section, continuous maps induce ring homomorphisms. If we take the map which maps $X$ to $x_0 \in X$ this comes down to restricting vector bundles over the fibers to $x_0$. Its kernel is $\tilde{K}(X)$. Hence it is an ideal. Then $\tilde{K}(X)$ obeys all the ring axioms except it might not have an identity element.
+\\Now we want to show that this multiplication is well defined. Suppose that $E_1, E_2$ come from the same equivalence class, and we have another element $E_3$. Then consider $E_1 \otimes E_3$ and $E_2 \otimes E_3$. We can both add them up $(E_1 + \epsilon^n) \otimes E_3$ and $(E_2 + \epsilon^m) \otimes E_3$. These are equivalent to the first statement, however, this also yields $E_1 \otimes E_3 + \epsilon^n \otimes E_3$. And also $E_2 \otimes E_3 + \epsilon^m \otimes E_3$. These terms are equal since we multiplied the same element of $K(x)$ by $E_3$. However, the last part is equivalent to zero, hence $E_1 \otimes E_3$ is equivalent to $E_2 \otimes E_3$. We can exactly mirror this argument for the other side of multiplication. This shows that multiplication is well defined. As we will see in the next section, continuous maps induce ring homomorphisms. If we take the map which maps $X$ to $x_0 \in X$ this comes down to restricting vector bundles over the fibers to $x_0$. Its kernel is $\tilde{K}(X)$. Hence it is an ideal. Then $\tilde{K}(X)$ obeys all the ring axioms except it might not have an identity element.
 \section{Continuous maps induce ring homomorphisms}
 Given two compact Hausdorff spaces $X, Y$ and a continuous map between them. As we have seen, a map $f: X \rightarrow Y$ induces a map in vector bundles $f^*: E_Y \rightarrow E_X$. We have seen that $f^* (E_1 \oplus E_2) = f^*(E_1) \oplus f^*(E_2)$ and $f^*(E_1 \otimes E_2) = f^*(E_1) \otimes f^*(E_2)$ hence $f^*$ is a homomorphism. Further more $(fg)^* = g^* f^*$, $1^* = 1$. Thus $K$ obeys all the required relations for a functor. 
 
@@ -89,7 +78,7 @@ These properties will be proved in later chapters
 We define the external product $\mu : K(X) \otimes K(Y) \rightarrow K(X \times Y)$ to be $\mu( a \otimes b) = p_1^*(a) p_2^*(b)$ where $p_1$ and $p_2$ are the projects of $X \times Y$ onto $X$ and $Y$. Notice that we tensor rings. The product of $a \otimes b \cdot c \otimes d$ is defined to be $ a \cdot c \otimes b \cdot d$.
 \subsection{The fundamental Product theorem}
 Theorem: The homomorphism $\mu:K(X) \otimes \mathbb{Z}[H]/(H-1)^2 \rightarrow K(X \times S^2)$ is an isomorphism of rings for all compact Hausdorff $X$.
-\\We will not proof this theorem here, as it is a detour from our goal. We might prove it later.
+\\We will not proof this theorem here, as it is a detour from our goal. For a proof we refer to \cite{VBKT}
 \\This theorem yields directly the following corollary by taking $X = \{0\}$:
 \\$\mathbb{Z}[H]/(H-1)^2 \rightarrow K(S^2)$ is an isomorphism of rings. This implies directly that $K(S^2) = \mathbb{Z}$
 \subsection{Complex Bott periodicity}
@@ -98,5 +87,5 @@ The Bott periodicity theorem for complex vector bundles states that $\beta: \til
 \subsection{K-theory as a Cohomology}
 We can make K-theory into a cohomology theory, by defining $\tilde{K}^{-n} (X) = \tilde{K}(S^n X)$. This obeys the axioms of cohomology. This will be shown in the chapter Extending to a cohomology theory. We then set $K^{-n}(X) = K(\Sigma^n X)$, where $\Sigma$ is the reduced suspension, i.e. where we send the north and south pole to the same point.
 \subsection{The Splitting Principle}
-Given a vector bundle $E \rightarrow X$ with $X$ compact Hausdorff space, there is a compact Hausdorff space $F(E)$ and a map $: F(E) \rightarrow X$ such that induced map $p^* : K^*(X)  \rightarrow K^*(F(E))$ is injective and $P^*(E)$ splits as a sum of line bundles.
+Given a vector bundle $E \rightarrow X$ with $X$ compact Hausdorff space, there is a compact Hausdorff space $F(E)$ and a map $: F(E) \rightarrow X$ such that induced map $p^* : K^*(X)  \rightarrow K^*(F(E))$ is injective and $P^*(E)$ splits as a sum of line bundles. For a proof of the splitting principle we refer to \cite{VBKT}
 \end{document}
