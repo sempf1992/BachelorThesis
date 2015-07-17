@@ -46,5 +46,794 @@ If the characteristic of $K$ is two however, $\langle x, x \rangle = 0$ for all 
 if the characteristic of $K$ is not $2$ then we can divide by $2$ and find the expression first claimed, otherwise we get the second claim.
 \end{myproof}
 
-We will now recall some basic definitions from linear algebra. We call two vectors $x,y \in V$ orthogonal if and only if $\langle x,y \rangle =0$. We call two subsets $U_1, U_2 \in V$ orthogonal iff all vectors in $U_1$ are orthogonal to all vectors in $U_2$.
+We will now recall some basic definitions from linear algebra. We call two vectors $x,y \in V$ orthogonal if and only if $\langle x,y \rangle =0$. We call two subsets $U_1, U_2 \in V$ orthogonal iff all vectors in $U_1$ are orthogonal to all vectors in $U_2$. We will use $x \perp U$ as a notation for $\{x\} \perp U$. The orthogonal complement $U^\perp$ is $\{ x \in V| x \perp U\}$.
+
+\begin{prop}
+Given a bilinear form $\langle , \rangle : V \times V \rightarrow K$ and a subset $U \subset V$ then $U^\perp$ is a subspace of $V$ and $U \subset (U^\perp)^\perp$.
+\end{prop}
+\begin{proof}
+We will that $U^\perp$ is a subspace of $V$:
+\begin{itemize}
+\item $\langle 0, x \rangle = 0$ for all $x \in V$ hence $0 \in U^\perp$.
+\item assume that $x$ and $y$ lie in $U^\perp$, then $\langle x, u \rangle + \langle y, u \rangle = \langle x + y , u \rangle = 0$ for all $u \in U$ hence $U^\perp$ is closed under addition.
+\item Let $x \in U^\perp$, then $\langle \lambda x, u \rangle = \lambda \langle x , u \rangle = \lambda 0 = 0$ hence $U^\perp$ is closed under scaler multiplication
+\end{itemize}
+This shows that $U^\perp$ is a linear subspace of $V$. Now since $x \in U$ then $x \perp U^\perp$ by definition of $U^\perp$. But that is also the definition of being in $(U^ \perp)^\perp$, hence $ x \in (U^\perp)^\perp$.
+\end{proof}
+\begin{mydef}
+A bilinear form $\langle , \rangle$ is called non-degenerte if the only vector in $V$ orthogonal to all other vectors is $0$. Equivalently
+\begin{equation}
+\langle x,y \rangle = 0 \forall y \in V \Rightarrow x = 0
+\end{equation}
+We will call a quadratic form non degenerate if its associated bilinear form is non-degenerate.
+\\If the restriction of $\langle , \rangle$ to a subspace $U$ of $V$ is non-degenerate we call $U$ non-singular. We will denote $\langle , \rangle|{|U \times U}$ and $\perp_U$ will denote the restricted form and the restricted orthogonality, respectively.
+\end{mydef}
+We will now show a handy property of non degenerate forms:
+\begin{prop}
+If the form $\langle , \rangle$ is non-degenerate and $\langle a,y \rangle = \langle b, y \rangle$ for all $y$ then $a = b$.
+\end{prop}
+\begin{myproof}
+\begin{align*}
+\langle a, y \rangle &= \langle b, y \rangle \forall y \in V \\
+\Leftrightarrow \langle a-b,y \rangle &= 0 \forall y \in V\\
+\Leftrightarrow a - b &= 0 \\
+\Leftrightarrow a = b
+\end{align*}
+\end{myproof}
+Another usefull proposition which we will need is the following:
+\begin{prop}
+If $\langle , \rangle$ is a bilinear form on a vector space $V$ an $U$ is a subspace of $V$, then the following are equivalent:
+\begin{itemize}
+\item U is non-singular
+\item $U \cap U^\perp = \{0\}$
+\end{itemize}
+\end{prop}
+\begin{myproof}
+If $U$ is non-singular then $\langle , \rangle_{|U \times U}$ is non-degenerate. Which is the same as $U^{\perp_U} = \{0\}$. On the other hand $U^{\perp_U} = \{ x \in U| x \perp U\} = U \cap U^\perp$. Hence $U \cap U^\perp = \{0\}$.
+\\Let $U \cap U^{\perp} = 0$. Take $x \in U$ such that $\langle x , y \rangle = 0$ for all $y \in U$. This propertie is the same as $x \perp U$, hence $x \in U^\perp$. This means that $x \in U\cap U^\perp = \{0\}$, hence $x = 0$.
+\end{myproof}
+The following statement states that for finite dimensional vector space their dual space is isomorphic to the space itself.
+\begin{lemma}
+let $V$ be a finite-dimensional vector space and $\langle , \rangle$ a non degenerate bilinear form on $V$. THen the linear map $\lambda : V \rightarrow V^*, v \mapsto \lambda_v = \langle x, \cdot \rangle$ is an isomorphism.
+\end{lemma}
+\begin{myproof}
+Let $V$ be a vector space over $K$ and $dim V = n$ for some $n \in \mathbb{N}$. Let $\langle , \rangle V \times V \rightarrow K$ be a non-degenerate bilinear form.
+\\Define $\lambda : V \rightarrow V^*$ by $v \mapsto \lambda_v \langle v, \cdot \rangle$. We see that $\lambda$ is linear since $\lambda_{c v + w} = \langle c v + w, \cdot \rangle = \langle cv, \cdot \rangle + \langle w, \cdot \rangle$ for all $v, w \in V$ and $c \in K$. The kernel of $\lambda$ is $\{0\}$ hence $\lambda$ is injective. It is also surjective since $dim V^* = dim V$, and finite dimensional.
+\\proof of kernel $\lambda$ being $\{0\}$
+\begin{align*}
+\ker \lambda &= \{v \in V | \lambda_v = 0\}\\
+             &= \{v \in V| \lambda_v(w) = 0 \forall w \in V\}\\
+             &= \{v \in V| \langle v, w\rangle = 0 \forall w \in V\}\\
+             &=\{0\}
+\end{align*}
+\end{myproof}
+This statement allows us to prove the next statement:
+\begin{theorem}
+If $V$ is a vector space over $K$, $\langle , \rangle$ is a bilinear form on $V$ and $U \subset V$ a finite dimensional non-singular subspace then 
+\begin{equation*}
+V = U \oplus U^\perp
+\end{equation*}
+If we also have that $\langle , \rangle$ is non-degenerate then $U^\perp$ is non-singular.
+\end{theorem}
+\begin{myproof}
+Assume that $U \subset V$ is non-singular and that the dimension of $U$ is finite. Then $U \cap U^\perp = \{0\}$. Thus we have the direct sum $U \oplus U^\perp$. Now we have to show that this equals $V$. We see that $U \oplus U^\perp$ is a subset of $V$ since $U$ and $U^\perp$ are both subsets of $V$ who only have $\{ 0 \}$ as a common element. Now we need to show that $V$ is a subset of $U \oplus U^\perp$.
+\\Given a vector $w \in V$ we are going to split it in two parts, one in $U$ and one in $U^\perp$. Since $U$ is finite dimensional and the restriction $\langle , \rangle_{|U \times U}$ is non degenerate, then $\mu : U \rightarrow U^*, v \mapsto \mu_v = \langle v, \cdot \rangle_{| U \times U}$ is an isomorphism by the previous lemma. Now let $\lambda V \rightarrow V^*, v \mapsto \lambda_v = \langle v, \cdot \rangle$. The form $\lambda_{w|U}$ belongs to $U^*$ as we just ahve shown. Therefore there is a vector $u \in U$, such that $\mu_u = \lambda_{w|U}$. This is the same as:
+\begin{equation}
+\langle u, v\rangle = \langle w, v \rangle \forall v \in U
+\end{equation}
+If we subtract the righthand side from the equation we get
+\begin{equation}
+\langle u - w, v \rangle = 0 \forall v \in U
+\end{equation}
+We now define $u'= u - w$. Then $u' - w \perp U$ hence $u'\in U^\perp$ and $w = u + u'$. Thus we have proven the first part of the statement, namely $V = U \oplus U^\perp$.
+\\Now assume that $\langle , \rangle$ is non-degenerate, that $U^\perp$ is singular and that we have $x \in U^\perp \cap (U^\perp)^\perp$. If we can prove that $x = 0$ we are done.  We start by taking an element $y$ in $V$. By the previous part of the proof we know we can write it as $u + u'$, with $u \in U$ and $u'\in U^\perp$. By our assumption $x \in U^\perp$ and $x \in (U^\perp)^\perp$. This means that $\langle x , u\rangle = \langle x , u'\rangle = 0$. We can add these together and get $\langle x , u \rangle + \langle x , u´ \rangle = \langle x , u+ u´  \rangle = \langle x , y \rangle = 0$. This is true for all $y$. SInce $\langle , \rangle$ is non degenerate this means that $x = 0$.
+\end{myproof}
+This theorem has 2 corollaries:
+\begin{Cor}
+If $\langle , \rangle : V \times V \rightarrow K$ is a bilinear form on a vector space $V$ and $U \subset V$ is a finite dimensional non-singular subspace, then the dimension of $V$ is the sum of the dimensions of $U$ and $U^\perp$.
+\end{Cor}
+\begin{myproof}
+We just use:
+\begin{align*}
+dim V &= dim (U \oplus U^\perp) \\
+      &= dim U + dim U^\perp
+\end{align*}
+and the theorem is proven.
+\end{myproof}
+\begin{Cor}
+If $\langle , \rangle : V \times V \rightarrow K$ is a non-degenerate bilinear form and $U$ is a finite-dimensional non-singular subspace of $V$ then $U = (U^\perp)^\perp$.
+\end{Cor}
+\begin{myproof}
+We already know that $U$ is a subset of $(U^\perp)^\perp$ so all we need to do is prove the other inlcusion. Let $x \in (U^\perp)^\perp$. We know that $V = U \oplus U^\perp$. Hence we can write $ x = u + u'$ with $u \in U$ and $u'\in U^\perp$. But then $u \in (U^\perp)^\perp$  since $u \in U$. Hence $x - u \in (U^\perp)^\perp$. We also know that $ x - u = u'\in U^\perp$. This implies that $x - u \in U^\perp \cap (U^\perp)^\perp$ and hence $ x - u = 0$. If we now add $u$ on both sides we get $x = u$ hence $ x \in U$.
+\end{myproof}
+This concludes on work on quadratic forms.
+\section{Composition algebras}
+In this section we are going to reveal the structure which a composition algebra naturally has. We defining a composition algebra:
+\begin{mydef}
+A composition algebra $C$ over a field $K$ is a pair $(C, N)$ where $C$ is a nonzero unital algebra and $N : C \rightarrow K$ a non-degenerate quadratic form that satisfies 
+\begin{equation}
+N(xy) = N(x)N(y) \forall x, y \in C
+\end{equation}
+\end{mydef}
+The quadratic form $N$ is somethimes called a norm and the associated bilinear form $\langle , \rangle$ an inner product. However the inner product need not be an inner product in the usual sence since it need not be positive semidefinite.
+\begin{mydef}
+A composition subalgebra of an composition algebra $(C, N)$ is a pair $(D, N)$ with $D$ a unital subalgebra of $C$.
+\end{mydef}
+There are several important examples of composition algebras. The real numbers are an example, $(\mathbb{R}, |.|)$ is a composition algebra. In the same fashion are the complex numbers the quaternions and the octonions composition algebras with the euclidean norm.
+\begin{prop}
+Let $C$ be any composition algebra, then the identity $e$ satisfies
+\begin{equation}
+N(e) = 1
+\end{equation}
+\end{prop}
+\begin{myproof}
+\begin{equation}
+N(e) = N(ee) = N(e)N(e)
+\end{equation}
+Hence $N(e) = 0$ or $N(e) = 1$, since in a field these are the only two elements that obey the property that they are equal to their squares.
+\\Now suppose $N(e) = 0$. Then this implies that $N(x) = N(x)N(e) = 0$ for all $x \in C$. Hence $\langle  e, x \rangle = 0 \forall x \in C$. However, since $\langle , \rangle$ is non-degenerate this means that $ e = 0$. But $e$ cannot be the zero element, hence $N(e) = 1$.
+\end{myproof}
+\begin{prop}
+If $x$ is an invertable element of a composition algebra $C$. Then
+\begin{equation}
+N(x^{-1}) = N(x)^{-1}
+\end{equation}
+In particular we know that $N(x)$ and $N(x^{-1})$ cannot be zero.
+\end{prop}
+\begin{myproof}
+Let $x$ be an invertable element of a composition algebra $C$. Then the following holds:
+\begin{equation}
+1 = N(e) = N(xx^{-1}) = N(x)N(x^{-1})
+\end{equation}
+Hence, $N(x^{-1}) = N(x)^{-1}$.
+\end{myproof}
+We will later show that $N(x) \neq 0$ is enough to have an inverse, and that that inverse is unique. However, to show that we need to construct extra machinery.
+
+\begin{prop}
+In every composition algebra $C$ the following identities hold for all $x, x_1, x_2, y, y_1, y_2 \in C$
+
+\begin{align*}
+\langle x_1 y, x_2 y \rangle &= \langle x_1, x_2 \rangle N(y)\\
+\langle x y_1, x y_2 \rangle &= N(x) \langle y_1, y_2 \rangle \\
+\langle x_1 y_1, x_2 y_2 \rangle + \langle x_1 y_2, x_2 y_1 \rangle &= \langle x_1, x_2 \rangle \langle y_1, y_2 \rangle
+\end{align*}
+\end{prop}
+\begin{myproof}
+We start by proving the first equality. The second equality follows from the exact argument, but then mirrored.
+\begin{align*}
+\langle x_1 y, x_2 y\rangle &= N(x_1y + x_2y) - N(x_1y) - N(x_2y)\\
+&= N((x_1 + x_2)y) - N(x_1y)-N(x_2y) \\
+&= N(x_1 + x_2)N(y) - N(x_1)N(y) - N(x_2)N(y)\\
+&= (N(x_1 + x_2) - N(x_1) - N(x_2))N(y)\\
+&= \langle x_1, x_2 \rangle N(y)
+\end{align*}
+The third identity we have
+\begin{align*}
+\langle x_1, x_2 \rangle N(y_1 + y_2) &= \langle x_1 ( y_1 + y_2, x_2 (y_1 + y_2) \rangle \\
+&= \langle x_1 y_1 + x_2y_2, x_2y_1 + x_2y_2 \rangle\\
+&= \langle x_1y_1, x_2 y_1 x_2y_2 \rangle + \langle x_1y_2, x_2y_1 + x_2y_1 + x_2y_2 \rangle \\
+&= \langle x_1y_1, x_2y_1 \rangle + \langle x_1y_1, x_2y_2 \rangle + \langle x_1y_2, x_2 y_1 \rangle + \langle x_1y_2, x_2y_2 \rangle
+&= \langle x_1, x_2 \rangle N(y_1) + \langle x_1y_1, x_2y_2 \rangle + \langle x_1y_2, x_2 y_1 \rangle + \langle x_1, x_2 \rangle N(y_2)
+\end{align*}
+But we also have
+\begin{align*}
+\langle x_1, x_2 \rangle N(y_1 + y_2) &= \langle x_1,x_2 \rangle (\langle y_1,y_2) + N(y_1) + N(y_2)) \\
+&= \langle x_1, x_2 \rangle \langle y_1, y_2 \rangle + \langle x_1 , x_2 \rangle ( N(y_1) + N(y_2))
+\end{align*}
+If we subtract $\langle x_1 , x_2 \rangle ( N(y_1) + N(y_2))$ from the last terms of both equations we get the last equation.
+\end{myproof}
+\begin{Cor}
+Let $C$ be a composition algebra and let $x,y \in C$ with $\langle x,y \rangle = 0$. Then for all $x_1, y_1 \in C$ we have
+\begin{equation}
+\langle x_1x, y_1y \rangle = -\langle x_1y, y_1 x \rangle
+\end{equation}
+\end{Cor}
+\begin{myproof}
+This statement follows directly from the last equality we have just shown.
+\end{myproof}
+
+\begin{prop}
+Let $C$ be a composition algebra and $x$ an element in $C$. Then the following identity holds
+\begin{equation}
+x^2 - \langle x,e \rangle x + N(x)e = 0
+\end{equation}
+\end{prop}
+\begin{myproof}
+We take $x \in C$. Then for abritrary $y$ we are going to recreate the inner product of $x^2 - \langle x,e \rangle x + N(x)e$ with $y$. This yields
+\begin{equation*}
+\langle x^2 - \langle x,e \rangle x + N(x)e, y \rangle = \langle x^2,y \rangle - \langle x, e \rangle \langle x, y \rangle + N(x) \langle e , y \rangle
+\end{equation*}
+Then we can take in the $N(x)$ into the inner product. This yields
+\begin{equation*}
+\langle x^2 - \langle x,e \rangle x + N(x)e, y \rangle = \langle x^2,y \rangle - \langle x, e \rangle \langle x, y \rangle + \langle xe, xy \rangle
+\end{equation*}
+Then since $\langle x^2,y \rangle + \langle xe, xy \rangle = \langle x,e \rangle \langle x,y \rangle$ by the last equation of the previous proposition. Hence we see that the first and the last term cancel versus the second term. This implies that 
+\begin{equation*}
+\langle x^2 - \langle x,e \rangle x + N(x)e, y \rangle = 0
+\end{equation*}
+This holds for all $y$, and since the quadratic form is not degenerate we have $x^2 - \langle x,e \rangle x + N(x)e = 0$
+\end{myproof}
+This proposition has an intresting corollary, which states that for a given algebra there is just one quadratic form.
+\begin{Cor}
+if $(C,M)$ and $(C,N)$ are composition algebras, then $M = N$.
+\end{Cor}
+\begin{myproof}
+for every $x \in C$ we have by the previous proposition
+\begin{align*}
+x^2 &= \langle x,e \rangle_M x - M(x)e\\
+x^2 &= \langle x,e \rangle_N x - N(x)e
+\end{align*}
+Hence 
+\begin{equation}
+\langle x,e \rangle_M x - M(x)e= \langle x,e \rangle_N x - N(x)e
+\end{equation}
+Here we consider two cases, e and $x$ are linearly independent or linearly dependent.
+\\In the first case if $e$ and $x$ are linearly independent then $-M(x) -N(x)$ hence $M(x) = N(x)$.
+\\In the second case if $e$ and $x$ are linearly dependent then $x = \lambda e$ for some $\lambda \in K$. Then we obtain
+\begin{equation*}
+M(x) = \lambda^2M(e) = \lambda^2 = \lambda^2N(e) = N(x)
+\end{equation*}
+Hence both cases lead to $M(x) = N(x)$.
+\end{myproof}
+Another corolarry is
+\begin{Cor} every composition algebra is a quadratic algebra
+\end{Cor}
+\begin{myproof}
+Let $C$ be a composition algebra. Then for all $x \in C$, $x^2 = \langle x, e \rangle x - N(x)e$. Hence $x^2 \in span\{e, x\}$.
+\end{myproof}
+\subsection{Imaginary elements and conjugation}
+On the real algebras we have a concept of complex numbers. For example in the complex field $\mathbb{C}$ there are the numbers so that they squared are an real number, but the number themselves are not a member of $\mathbb{R}-\{0\}$.
+\begin{mydef}
+The set of all purely imaginary numbers of a composition algebra over $K$ is the set
+\begin{equation}
+\Ima C = \{ x \in C | x^2 \in Ke, x \not\in Ke-\{0\}\}
+\end{equation}
+\end{mydef}
+\begin{prop}
+Let $C$ be a composition algebra over a field $K$ with char $K$ unequal to $2$. THen $\Ima C$ is a non-singular subspace of $C, \Ima C = (ke)^\perp$ and $C = \Ima C \oplus Ke$
+\end{prop}
+\begin{myproof}
+It is enough to prove that $Ke$ is a non-singular subspace and that $\Ima C = (Ke)^\perp$. The rest will follow from the theorem we proved in the previous section since the dimension of $Ke$ is $1$.
+\\Asume that $Ke$ is singular. Then $x \in (KE)^\perp \cap Ke$ for some non-zero $x \in C$. Hence $x = \lambda e, \lambda \neq 0$ and $\langle x, e \rangle = 0$. However, $0 = \langle e, e \rangle = \lambda \langle e, e \rangle = 2 \lambda$. Hence $\lambda = 0$, and thus $ x = 0$. Thus this leads to a contradiction, which implies that $(Ke)$ is singular.
+\\Now we are going to show $\Ima C = (Ke)^\perp$. As a first step we will show $\Ima C \subset (Ke)^\perp$. Let $x \in \Ima (C) - \{0\}$. Thus $x$ and $e$ are linearly independent and $x^2 = \lambda e$ for some $\lambda$. We also have $N(x) = -\lambda$ and $\langle x,e \rangle = 0$. Hence $x \in (Ke)^\perp$.  
+\\Now the other inclusion. Assume $x \in (Ke)^\perp$. Then $\langle x, e \rangle = 0$ and we again obtain $x^2 = \langle x, e \rangle x 0 N(x)e = -N(x)e$. Since $x \perp Ke$ we have $x \neq Ke - \{0\}$ since $Ke$ is non-singular. Hence $x \in \Ima C$. Thus $ C = (Ke)^\perp$. This concludes the proof.
+\end{myproof}
+For the complex numbers we have a complex conjugation map. In general there also exists a conjugation map which behaves a lot like the conjugation map for complex numbers.
+\begin{mydef}
+Let $C$ be a composition $K$-algebra. The conjugation map $\bar{\cdot} : C \rightarrow C, x \mapsto \bar{x}$ is defined by
+\begin{equation}
+\bar{x} = \langle x, e \rangle e - x
+\end{equation}
+\end{mydef}
+Geometrically speaking, this is minus the reflection of $x$ in $(Ke)^\perp$. For the complex numbers the definition is the same with the usual definition of complex conjugates.
+\begin{prop}
+Let $C$ be a composition algebra. Then conjugation is a linear map and $\bar{\bar{x}} = x$.
+\end{prop}
+
+\begin{myproof}
+Linearity follows straightforward of the definition since $\bar{x}$ is the sum of two linear maps ($\langle x, e \rangle e $ and minus the identity map. To show that $\bar{\bar{x}} = x$ we directly compute it:
+\begin{align*}
+\bar{\bar{x}} &= \langle \bar{x}, e \rangle e - \bar{x}\\
+&= \langle \langle x, e \rangle e - x, e \rangle e - \langle x, e \rangle e + x \\
+&= \langle x, e \rangle \langle e, e \rangle e - \langle x, e \rangle e - \langle x, e \rangle e + x \\
+&= 2 \langle x, e \rangle e - 2 \langle x ,e \rangle e + x \\
+&= x
+\end{align*}
+Here we used that $\langle e, e \rangle = 2N(e) = 2$.
+\end{myproof}
+Other important properties of conjugation hold too. They have to be slightly modified.
+\begin{prop}
+In every composition algebra $C$ the following holds for all $x, y \in C$.
+\begin{itemize}
+\item $x \bar{x} = \bar{x} x = N(x) e$
+\item $\bar{xy} = \bar{y}\bar{x}$
+\item $N(\bar(x)) = N(x)$
+\item $\langle \bar{x}, \bar{y} \rangle = \langle x, y \rangle$
+\end{itemize}
+\end{prop}
+
+\begin{myproof}
+The first property we will show one side, and the other side is symmetric:
+\begin{align*}
+N(x)e &= \langle x,e \rangle x - x^2\\
+      &= ( \langle x, e \rangle e - x) x\\
+      &= \bar{x}x
+\end{align*}
+For the second property observe
+\begin{equation}
+xy = \langle x,e \rangle e + \langle x, e \rangle y - \langle x, y \rangle e - yx
+\end{equation}
+This holds since
+\begin{align*}
+xy &= (x + y)^2 - x^2 - y^2 - yx\\
+   &- \langle x + y, e \rangle ( x + y) - N(x + y)e - \langle x, e\rangle x + N(x) e 0 \langle y, e \rangle y + N(y)e - yx \\
+   &= \langle x,e \rangle y + \langle y, e \rangle x - (N(x + y) - N(x) - N(y))e - yx \\
+   &= \langle y, e \rangle x + \langle x, e \rangle y - \langle x,y \rangle e - yx
+\end{align*}
+By the definition of conjugation we have
+\begin{align*}
+\bar{y}\bar{x} &= (\langle y,e \rangle e - y)( \langle x, e \rangle e -x) \\
+&= \langle x,e \rangle \langle y, e \rangle e - \langle x, e \rangle - \langle y, e \rangle x + yx \\
+&= \langle xy, e \rangle e - xy \\
+&⁼ \bar{xy}
+\end{align*}
+Hence we have shown the second property.
+\\For the third property we use the two previous properties. This yields
+\begin{equation}
+N(\bar{x}) e = \bar{\bar{x}}\bar{x} = x \bar{x} = N(x) e
+\end{equation}
+Hence $N(\bar{x}) = N(x)$
+\\Now if we use the third property we can show the fourth property
+\begin{align*}
+ \langle \bar{x}, \bar{y} \rangle &= N(\bar{x} + \bar{y}) - N(\bar{x}) - N(\bar{y})
+ &= N( \bar{x + y}) - N(\bar{x} - N(\bar{y})\\
+ &= N(x + y) - N(x) - N(y) \\
+ &= \langle x, y \rangle
+\end{align*}
+\end{myproof}
+As we said earlier about existence of inverses, we can show the following proposition now
+\begin{prop}
+In every composition algebra $C$ and for every $x \in C$ the following two statements are equivalent:
+\begin{itemize}
+\item $x$ has an inverse
+\item $N(x) \neq 0$
+\end{itemize}
+In the case $N(x)^ {-1} \bar{x}$ is the inverse of $x$
+\end{prop}
+\begin{myproof}
+We have shown that if $x$ has in inverse then $N(x) \neq 0$.
+\\Now suppose we know $N(x) \neq 0$. Define $y = N(x)^{-1}\bar{x}$. This yields
+\begin{equation}
+xy = x(N(x)^{-1}\bar{x}) = N(x)^{-1}(x \bar{x}) = N(x)^{-1}N(x) e = e
+\end{equation}
+The other equality $yx = e$ is just the same statement but then mirrored hence $xy = yx = e$.
+\end{myproof}
+\subsection{Associativity properties}
+So far we have not looked at any form of associativity properties of composition algebras. We will start investigating these now. It will turn out that although composition algebras need not be associative they obey a lot of other properties that are almost the same.
+\begin{prop}
+Let $C$ be a composition algebra and let $x,y, z \in C$. Then the following three equivalances hold:
+\begin{align}
+\langle xy, z \rangle &= \langle y, \bar{x}z \rangle\\
+\langle xy, z \rangle &= \langle x, z\bar{y} \rangle \\
+\langle xy, \bar{z} \rangle &= \langle yz, \bar{x} \rangle \\
+\end{align}
+\end{prop}
+\begin{myproof}
+\begin{align*}
+\langle y, \bar{x}z \rangle &= \langle y, (\langle x, e \rangle e - x ) z \rangle \\
+&= \langle y, \rangle x, e \rangle z \rangle - \langle y, xz \rangle \\
+&= \langle x, e\rangle \langle y, z \rangle - \langle y, xz \rangle\\
+&= \langle xy, z \rangle + \langle xz, y \rangle - \langle y, xz \rangle\\
+&= \langle xy, z \rangle
+\end{align*}
+To prove the second equality we use the following
+\begin{align*}
+\langle xy, z \rangle &= \langle y , \bar{x}z \rangle\\
+&= \langle \bar{y}, \bar{z}x \rangle\\
+&= \langle z \bar{y}, x \rangle\\
+&= \langle x, z \bar{y} \rangle
+\end{align*}
+\begin{align*}
+\langle xy, \bar{z} &= \langle \bar{z} xy \rangle\\
+&= \langle z, \bar{xy} \rangle \\
+&= \langle z, \bar{x} \bar{y} \rangle \\
+&= \langle yz , \bar{x} \rangle
+\end{align*}
+\end{myproof}
+With this proposition we can now define adjoint operators on a composition algebra. First recall that the adjoint of an linear operator $f$ on an inner product space $V$ is the unique linear operator such that $\langle f(x), y \rangle = \langle x, f^*(y) \rangle$ for all $x,y \in V$. Using this definition the adjoints in composition algebras are given by
+\begin{align*}
+L^*_x &= L_{\bar{x}}\\
+R^*_y &= R_{\bar{y}}\\
+\end{align*}
+They are adjoints since $\langle L_x(y), z \rangle = xy, z \rangle = \langle y, \bar{x}z \rangle = \langle y, L_{\bar{x}}(z) \rangle$, and similarly for $R_y$.
+\\The next proposition is a generalization of a proposition we have proven in the previous subsection.
+\begin{prop}
+If $C$ is a composition algebra and $x,y \in C$. Then the following holds:
+\begin{align}
+x(\bar{x}y) &= N(x)y\\
+(x\bar{y})y &= N(y)x
+\end{align}
+\end{prop}
+\begin{myproof}
+We will show that $\langle x(\bar{x}y), z \rangle = \langle N(x)y, z \rangle$ for all $z$. Then we have equality due to a proposition of the first section
+\begin{align*}
+\langle x ( \bar{x} y), z \rangle &= \langle \bar{x}y, \bar{x} z \rangle \\
+&= \langle x \bar{x} y, z \rangle \\
+&= N(x) \langle y, z \rangle \\
+&= \langle N(x) y, z \rangle
+\end{align*}
+This holds for all $z$ hence $x(\bar{x} y) = N(x) y$.
+If we now use conjugation we get the following equation:
+\begin{equation}
+\overline{x(\overline{x}y)} = (\overline{\overline{x}y}) \bar{x} = (\bar{y} x) \bar{x}
+\end{equation}
+and we also have
+\begin{equation}
+\bar{N(x)y} = N(x) \bar{y}
+\end{equation}
+These two combined prove the second equation.
+\end{myproof}
+The previous proposition has the first result on associativity:
+\begin{Cor}
+For all $x$ and $y$ in a composition algebra $C$ the following holds
+\begin{align}
+x(\bar{x}y) &= (x\bar{x})y\\
+x(\bar{y}y) &= (x \bar{y}y\\
+\end{align}
+\end{Cor}
+\begin{myproof}
+This result follows directly from the previous proposition and using  $x \bar{x} = N(x)e$
+\end{myproof}
+Another corollary states the uniqueness of inverses:
+\begin{Cor}
+Let $C$ be a composition algebra. Then every element $x \in C$ that satisfies $N(x) \neq 0$ has an unique inverse $N(x)^{-1}\bar{x}$
+\end{Cor}
+\begin{myproof}
+Let $x \in C$ and $N(x) \neq 0$. Then $x$ has an inverse $y = N(x)^{-1} \bar{x}$. Assume that there is another element $z$ such that $xz = zx = e$. Then
+\begin{align*}
+y &= y(xz) \\
+  &= N(x)^{-1}\bar{x}(xz)\\
+  &= N(x)^{-1}N(x)z \\
+  &= z
+\end{align*}
+\end{myproof}
+There is another form of associativity rules which composition algberas obey. They are the moufang identities:
+
+\begin{mydef}
+Let $x, y a$ be elements of a composition algebra $C$. The moufang identities are
+\begin{align}
+(ax)(ya) &= a((xy)a)\\
+a(x(ay)) &= (a(xa))y\\
+x(a(ya)) &= ((xa)y)a
+\end{align}
+\end{mydef}
+
+\begin{prop}
+In every composition algebra the Moufang identities hold.
+\end{prop}
+\begin{myproof}
+We will take the inner product of $(ax)(ya)$ with an arbitrary element $z \in C$. Then we will show that that inner product equals the inner product of $a((xy)a)$ with $z$ and hence these two elements are equal.
+\begin{align*}
+\langle (ax)(ya), z\rangle &= \langle ya, (\bar{ax}) z\rangle\\
+&= \langle ya, (\bar{x}\bar{a}) z \rangle\\
+&= \langle y, \bar{x}\bar{a}\rangle\langle a, z \rangle - \langle yz, (\bar{x}\bar{a})a \langle \\
+&= \langle xy, \bar{a}\rangle\langle a, z \rangle - \langle yz, N(a)\bar{x} \langle \\
+&= \langle xy, \bar{a}\rangle\langle a, z \rangle - N(a)\langle yz, \bar{x} \langle \\
+&= \langle xy, \bar{a}\rangle\langle a, z \rangle - N(a)\langle xy, \bar{z} \langle \\
+&= \langle xy, \bar{a}\rangle\langle a, z \rangle - N(a)\langle (xy)z, e \langle \\
+&= \langle xy, \bar{a}\rangle\langle a, z \rangle - \langle (xy)z, \bar{a}a \langle \\
+&=\langle (xy) a, \bar{a} z \rangle \\
+&= \langle a((xy)a), z \rangle
+\end{align*}
+This proves the first equality. The second equality is again proven by a long chain of equalities.
+\begin{align*}
+\langle a(x(ay)), z \rangle &= \inner{x(ay)} {\bar{a} z}\\
+&= \inner{x}{(\bar{a}z)(\bar{ay})} \\
+&= \inner{\bar{x}}{ \bar{\bar{a} z) (\bar{ay})} } \\
+&= \inner{\bar{x}} { (ay)(\bar{z} a} \\
+&= \inner{x}{\bar{a((y \bar{z})a}} \\
+&= \inner{x}{(\bar{(y\bar{z})a})) \bar{a}} \\
+&= \inner{x}{(\bar{a}(z \bar{y} )) \bar{a}} \\
+&= \inner{xa}{ \bar{a}(z \bar{y}} \\
+&= \inner{a(xa)}{x\bar{y}} \\
+&= \inner{(a(xa))y}{z}
+\end{align*}
+This proves the second equality. To prove the third we start with the second and we conjugate it. This yields the equality we want.
+\end{myproof}
+
+\begin{prop}
+Let $C$ be a composition algebra. Then $C$ is alternative.
+\end{prop}
+This proposition can be generalised into this proposition, which has the same proof:
+\begin{prop}
+Let $A$ be an unital Algebra that obeys the Moufang identities, then $A$ is alternative.
+\end{prop}
+
+\begin{myproof}
+We need to prove the following equalities:
+\begin{align}
+x(yx) &= (xy)x \\
+(xx)y &= x(xy) \\
+(xy)y &= x(yy) \\
+\end{align}
+The first equality follows directly if we multiply this by $e$ on both sides. This yields
+\begin{equation}
+(xy)x = (xy)(ex) = x((ye)x) = x(yx)
+\end{equation}
+The second equation follows from
+\begin{equation}
+x(xy) = x(e(xy)) = (x(ex)) = (xx) y
+\end{equation}
+The third equality follows from 
+\begin{equation}
+x(yy) = x(y(ey)) = ((xy)e)y = (xy)y
+\end{equation}
+This concludes our proof.
+\end{myproof}
+If we summarize our results into this theorem:
+\begin{theorem}
+Let $C$ be a composition algebra. THen $C$ is a quadratic, alternative algebra that satisfies the Moufang identities.
+\end{theorem}
+\subsection{Doubling}
+We will now start our work on the doubling construction. This will allow us to construct all the possible composition algebras over a field.
+\begin{lemma}
+Let $C$ be a composition algebra. If $D \subset C$ is a finite-dimensional proper non-singular subspace of $C$, then there is an element $a \in D^\perp -  \{ 0 \}$ such that $N(a) \neq 0$.
+\end{lemma}
+
+\begin{myproof}
+Asumme that $N(x) = 0$ for all $x \in D^\perp$. We know that $C = D \oplus D^\perp$ where $D^\perp$ is non-singular. We also know that $D \neq C$, hence $D^\perp \neq \{ 0 \}$. Now take any element $a$ in $D$ which is nonzero. Then
+\begin{equation}
+\inner{a}{x} = N(a + x) - N(a) - N(x) = 0 - 0 - 0 = 0 \forall x \in D^\perp
+\end{equation}
+Hence since $D^\perp$ is non-singular we have $ a= 0$. This contradicts our assumption, hence not all elements of $D^\perp - \{ 0 \}$ can have nonzero norm.
+\end{myproof}
+If we take $D$ a proper subset of $C$ and $D$ is also a finite-dimensional proper composition subalgebra, then this lemma tells us that we can create another subalgebra of $C$
+\begin{equation}
+D_2 = D_1 \oplus D_1 a
+\end{equation}
+where $a$ is an nonzero element of $D^\perp$ such that $N(a) \neq 0$. This allows us to start the doubling construction:
+\begin{prop}
+If $D_1$ is a finite-dimensional proper composition subalgebra of a composition algebra $C$, $a \in D_1^{\perp} - \{ 0 \}$ and $N(a) \neq 0$ then the subspace 
+\begin{equation}
+D_2 = D_1 \oplus D_1 a
+\end{equation}
+of $C$ is a composition subalgebra of $C$ with dimension of $D_2$ twice the dimension of $D_1$. Multiplication of $D_2$ then is defined in the following way:
+\begin{equation}
+(x + ya)(z + wa) = (xz - N(a)\bar{w} y) + (wx + y \bar{z})z
+\end{equation}
+
+\end{prop}
+\begin{myproof}
+We will split the proof into $2$ parts. The first part will proof that the sum is direct. The second part will work on the proof of the multiplication. If we show that the claimed multiplication rule is the correct rule, we have shown that $D_2$ is closed under multiplication and non-singular.
+\\We start by showing that the sum is a direct sum. We will show that $D_1a \subset D_1^\perp$. This proves that $D_2$ is a direct sum. Hence, what we need to do is $xa \perp D_1$. Hence what we need to show is
+\begin{equation}
+\inner{xa}{y} = 0 \forall x, y \in D_1
+\end{equation}
+We know that $D_1$ is closed under conjugation and multiplication since it is a composition subalgebra. We know that $\inner{xa}{y} = \inner{a}{\bar{x}y}$. But $\bar{x}y$ is an element of $D_1$ and $a \in D_1^\perp$. Hence this inner product is zero. Thus $xa \perp y$. Thus $D_1a \subset D_1^\perp$.
+\\The second part of the proof is to work out the multiplication. The left hand side of the multiplication is the multiplication what it should be in $C$. If we work this multiplication out we get
+\begin{equation}
+(x + ya)(z + wa) = xz + x(wa) + (ya)z + (ya)(wa)
+\end{equation}
+If we show the following equalities we are done:
+\begin{align}
+x(wa) &= (wx)a\\
+(ya)z &= (y \bar{z})a \\
+(ya)(wa) &= -N(a)\bar{w}y
+\end{align}
+At first we note that $\bar{v} = -v$ for all $v \in C$ with $v \perp e$. In particular we get
+\begin{equation}
+\bar{va} = -va
+\end{equation}
+for all $v \in D_1^\perp$
+\\The next step is to prove the first equality. Note that $N(a) \neq 0$. Hence $a$ is invertible. We start with $x(wa) = (wx)a$ We will left multiply this by $a$. This yields $(ax)(wa) = a((xw)a)$. Then we multiply left by $a^{-1}$. This yields the first equality.
+\\The second equality follows in the same fashion if we multiply by $a$. We then get $a(x(ay)) = (a(xa))y$. Then we can again multiply by $a^{-1}$ on the left and get the second equality.
+\\The third equality follows from the equality
+\begin{equation}
+va = \bar{\bar{va}} = \bar{-va} = -\bar{a}\bar{v} = a\bar{v}
+\end{equation}
+This allows us to compute
+\begin{align*}
+(ya)(wa) &= (a\bar{y})(wa) \\
+&= a((\bar{y}w)a)\\
+&= a(a(bar{\bar{y}w}))\\
+&= a(a(\bar{w}a)) \\
+&= (aa)(\bar{w}y)\\
+&= -(a\bar{a})(\bar{w}y)\\
+&= -N(a)(\bar{w}y)
+\end{align*}
+Hence $D_2$ is closed under multiplication. What is left to do is to show $D_2$ is non-singular. We look at the norm $N_{D_2}$. We get
+\begin{align*}
+N(x + ya) &= \frac{1}{2}\inner{x+ya}{x+ya}\\
+&= \frac{\inner{x}{x} + \inner{ya}{ya} + \inner{x}{ya} + \inner{ya}{x}}{2}\\
+&= N(x) + N(ya) + \inner{x}{ya}
+&= N(x) + N(y)N(a)
+\end{align*}
+The last step holds since $ay \perp x$.
+\\Now we take a look on the inner product, we get for $x,y v, w \in D_1$
+\begin{align*}
+\inner{x + ya}{v + wa} &= \inner{x}{v} + \inner{x}{wa} + \inner{ya}{v} + \inner{ya}{wa}\\
+&= \inner{x}{v} + \inner{ya}{wa}\\
+&= \inner{x}{v} + \inner{y}{w}N(a)
+\end{align*}
+fix $x, y \in D_1$. Now assume that the inner product stated above is zero for all $v, y \in D_1$. Then $\inner{x}{v} + \inner{y}{w}N(a) = 0$ for all $v, w \in D$. Suppose $w = 0$. Then $\inner{x}{v} = 0$ for all $v$ and hence $ x = 0$. Suppose $v = 0$. Then we can divide by $N(a)$ since $N(a)$ is a non-zero field element. Hence yield $\inner{y}{w} = 0$ for all $w$. This gives $y = 0$. Thus the only element for which this inner product with all other elements of $D_2$ is zero is $0$. Thus $D_2$ is non-singular.
+\\The last step is to prove the claim that the dimension of $D_2$ is twice the dimension of $D_1$. What we need to show is that the dimension of $D_1a$ is the dimension of $D_1$. We define $R_a$ to be the map $x \mapsto xa$. This is a linear map since multiplication is bilinear. It is also invertable since $a$ has an inverse. Hence $R^{-1}_a = R_{a^{-1}}$. This gives a bijective map and hence it is an isomorphism. This implies that the dimension of $D_1a$ is the dimension of $D_1$. Since the dimension of $D_2$ is the dimension of $D_1$ plus the dimension of $D_1a$ we get that the dimension of $D_2$ is twice the dimension of $D_1$.
+\end{myproof}
+This yields us a powerfull tool to create new algebras. But we have not shown much properties of this new algebra. 
+\begin{prop}
+Let $C$ be a composition algebra and $D$ a finite dimensional proper composition subalgebra. Then $D$ is associative.
+\end{prop}
+\begin{myproof}
+Let $ a \in D^\perp - \{0\}$ with $N(a) \neq 0$. We already have shown that such an element must exist. Then we use the following equality $N((x + ya)(z + wa)) = N(x + ya)N(z + wa)$ for $x,y ,z w \in D$. This yields
+\begin{align*}
+N((x + ya)(z + wa)) &= N((xz - N(a)\bar{w}y) + (wx + y\bar{z})a)\\
+&=N(xz - N(a) \bar{w}y) + N(a) N(wx + y\bar{z}) \\
+&=\inner{xz}{-N(a)\bar{w}y} + N(xz) + N(-N(a) \bar{w}y) + N(a) (\inner{wx}{y\bar{z}} + N(wx) + N(y \bar{z}))
+\end{align*}
+And we also get
+\begin{align*}
+N(x + ya)N(z + wa) &= (N(x) + N(y)N(a))(N(z) + N(w)N(a)) \\
+&= N(x)N(z) + N(x)N(w) N(a) + N(y)N(z)N(a) + N(y)N(w)N(a)N(a)\\
+&= N(xz) + N(wx)N(a) + N(y\bar{z})N(a) + N(a)^2N(\bar{w}y)
+\end{align*}
+These two statements are equal, hence we can equate them. We will first subtract the statements which are the same expression. This yields
+\begin{equation}
+\inner{xz}{-N(a)\bar{w}y} + N(a) \inner{wx}{y\bar{z}} = 0
+\end{equation}
+Hence we can take $-N(a)$ outside of the inner product and move that term to the other side. This yields
+\begin{equation}
+N(a)\inner{xz}{\bar{w}y} = N(a) \inner{wx}{y\bar{z}}
+\end{equation}
+Since $N(a)$ is invertable we can divide by this and get
+\begin{equation}
+\inner{xz}{\bar{w}y} = \inner{wx}{y\bar{z}}
+\end{equation}
+We will now transform these equations into a more workable form
+\begin{align*}
+\inner{wx}{y\bar{z}} &= \inner{y\bar{z}}{ wx} \\
+&= \inner{(y \bar{z})\bar{x}}{w}\\
+&= \inner{x(z \bar{y})}{ \bar{w}}
+\end{align*}
+And we get
+\begin{equation*}
+\inner{xz}{\bar{w}y} = \inner{(xz)\bar{y}}{\bar{w}}
+\end{equation*}
+Thus we have
+\begin{equation}
+\inner{x(z\bar{y})}{\bar{w}} = \inner{(xz)\bar{y}}{\bar{w}}
+\end{equation}
+This last equaltion holds for all $w$. Since we can transform any multiplication into this form we get associativity.
+\end{myproof}
+We will now show an proposition that states that every finite proper composition subalgebra of an associative composition algebra is associative and commutative.
+\begin{prop}
+Let $C$ be a composition algebra and $D_1$ a finite dimensional proper composition subalgebra. Take $a \in D_1^\perp$ with $N(a) \neq 0$ and let $D_2 = D_1 \oplus D_1a$. Then the two statements are equivalent:
+\begin{itemize}
+\item $D_2$ is associative
+\item $D_1$ is commutative.
+\end{itemize}
+\end{prop}
+\begin{myproof}
+$D_2$ is the composition subalgebra the doubling proposition. We will show first that if $D_2$ is associative then $D_1$ is associative and commutative.
+\\If $D_2$ is associative then every subalgebra of $D_2$ is also associative. Hence $D_1$ is associative. Suppose $x, y \in D_1$ then $(xy)a = x(ya)$ and we know $x(ya) = (yx)a$. Combining this gives
+\begin{equation}
+xy = xyaa^{-1} = ((xy)a)a^{-1} = ((xy)a)^{-1} = yxaa^{-1} = yx
+\end{equation}
+This shows the first direction. For the other direction assume that $D_1$ is both commutative and associative. Then we want to show that multiplication in $D_2$ is associative. Pick $3$ elements of $D_2$. These are $z_i = x_i + y_ia$ for $i = 1, 2, 3$. Then using the multiplication in $D_2$ we get
+\begin{align*}
+(z_1z_2)z_3 = (x_1x_2)x_3 - N(a)((\bar{y_2}y_1)x_3 + \bar{y_3}(y_2x_1) + \bar{y_3}(y_1\bar{x_1})) + (y_3(x_1x_2) - N(a)(y_3(\bar{y_y}y_1) + (y_2x_1)\bar{x_3} + (y_1\bar{x_2})\bar{x_3})a
+z_1(z_2z_3) = x_1(x_2x_3) - N(a)(x_1(\bar{y_3}y_2) + (y_3x_2)y_1 + (y_2\bar{x_3})y_1) + ((y_3x_2)x_1 + (y_2\bar{x_3})x_1 + y_1(\bar{x_2}\bar{x_2}) - N(a)y_1(\bar{y_2}y_3))a
+\end{align*}
+Since $D_1$ is both commutative and associative we have two observations. First $(x_1x_2)x_3 = x_1(x_2x_3)$ and second all the terms containing an term $a$ (not $N(a)$) are equal since we can just move the terms around. To show that the statements are equal we need to show that the $3$ terms with an $N(a)$ in are equal. Hence
+\begin{align*}
+N(a)(\bar{y_2}y_1)x_3 &= N(a)x_1(\bar{y_3}y_2)\\
+N(a)\bar{y_3}(y_2x_1) &= N(a)\bar{y_3}(y_1\bar{x_1}) \\
+N(a)(y_3x_2)y_1 &= N(a)(y_2\bar{x_3})y_1
+\end{align*}
+If we use that $(ya)z = (y\bar{z})a$ then we arrive at the following:
+\begin{equation}
+N(a)xyz = a\bar{a}xyz = a\bar{z}((ya)x) = \bar{a}z((y\bar{x})a) = N(a)\bar{x}yz
+\end{equation}
+Since we have commutativity we can do the same for $y$ and $z$. Hence we see
+\begin{equation}
+N(a)xyz = N(a)\bar{x}yz = N(a)x\bar{y}z = N(a)xy\bar{z}
+\end{equation}
+This proves the equalities above since we can just move the terms around till they are in the correct form.
+\end{myproof}
+
+\section{The 1,2,4,8 theorem and the classification of all Composition algebras}
+We have now done all the work to do the mayor goal this section. We can now classify all composition algebras.
+\begin{theorem}
+Let $C$ be a composition algebra over a field $K$. THen $C$ is a quadratic alternative algebra that satisfies the Moufang identities. Moreover, it must also satisfy the following:
+\begin{tabular}{ l | l| l| l|l}
+dim C & K & commutative & associative & alternative \\
+\hline
+1 & char $\neq 2$ & yes & yes & yes\\
+2 & any & yes & yes & yes\\
+4 & any & no & yes & yes\\
+8 & any & no & no & yes\\
+\end{tabular}
+\end{theorem}
+
+\begin{myproof}
+Let $C$ be a division algebra. We have already shown it is a quadratic alternative algebra that satisfies the Moufang identities. Now we need to show the rest.
+\\We start with any composition algebra $C$. Then if the characteristic of $K$ is unequal to $2$, we can find a one-dimensional composition subalgebra $D_1 = Ke$. It is non-singular since $\inner{\lambda e}{\mu e} = \lambda \mu \inner{e}{e} = 2 \lambda \mu \neq 0$ if $\lambda, \mu \neq 0$. However if the characteristic of $K$ is $2$ then $\inner{\lambda e}{\mu e}$ is equal to zero, thus $Ke$ must be singular. Therefore the dimension of $C$ must be bigger than $2$ in that case.
+\\If the dimension of $C$ is bigger than $1$ then in the case the characteristic is not $2$ we get a two dimensional subalgebra $D_2 = d_1 \oplus D_1 a$ for some $a \in C$. Since $D_1$ is both associative and commutative (it is isomorphic to the underlying field) we get that $D_2$ is associative. We need to show it is commutative. Let $x,y, z ,w \in K$, i.e. $xe, ye, ze, we \in D_1$. Then we have
+\begin{align*}
+(xe + ya)(ze + wa) &= xze + x(wa) + (ya)ze + (ya)(wa) \\
+&= zxe + wxa +  zya + (wa)(ya)\\
+&= (ze + wa)(xe + ya)
+\end{align*}
+Hence $D_2$ is commutative. If the characteristic of $K$ is two, then we will prove it as a lemma after this theorem. Hence no matter the characteristic we have a commutative associative composition subalgebra of $C$ of dimension $2$, if the dimension of $C$ is bigger than $1$.
+\\Now suppose that the dimension of $C$ is greater than $2$. Then we can perform the doubling another time and get a four-dimensional subalgebra $D_3 = d_2 \oplus d_2 b$. It is associative since $D_2$ is associative and commutative. However it is not commutative itself.
+\\We start by defining an element $y$ which is perpendicular on $e$. If the characteristic of $K$ is not $2$ then take $y = a$. This yields $\inner{y}{e} = 0$. Hence $\bar{y} = -y \neq y$> if the characteristic of the underlying field is two, then assume that $\bar{y} = y$. We then have $\bar{y} = \inner{y}{e}e - y$. This implies $2y = 0 = \inner{y}{e}e$. However this contradicts our choise of $y$, which had to be perpendicular on $e$.  Thus $y \neq \bar{y}$. We will show that $D_2b$ is non-singular. Assume that there is some $xb \in D_2b$ for which we have $\inner{xb}{zb} = 0$ for all $zb \in D_2b$. Then $\inner{xb}{zb} = \inner{x}{z}N(b) = 0$. Hence $\inner{x}{z} = 0$ for all $z \in D_2$. Since $D_2$ is non-singular this means that $x = 0$, and thus $xb =0$. This shows that $D_2b$ is non-singular. We can now find an element $ x \in D_2 b$ such that $N(x) \neq 0$. Since $ x \in D_2 b$ we know that $ x \in D_2^\perp$. Hence $\bar{xy} = -xy$. However $\bar{xy} - \bar{y}\bar{x} = -\bar{y} x$ since $ x \perp e$. If we combine these results with $y \neq \bar{y}$ we get
+\begin{equation}
+xy = \bar{y}x \neq yx
+\end{equation}
+So we have shown that $D_3$ is not commutative.
+\\There is one final doubling we can make. If we assume that the dimension of $C$ is bigger than $4$ we can double once more to get $D_4 = d_3 \oplus D_3c$. It is not associative since $D_3$ is not commutative. It is not commutative since we can identify $D_3$ as a subalgebra of $D_4$, and $D_3$ itself is not commutative. Moreover, it cannot be a proper subalgebra of $C$, thus $C = D_4$.
+\end{myproof}
+Now we prove the lemma which we used in the proof of the first doubling.
+\begin{lemma}
+If $C$ is a composition $K$ algebra with char $K = 2$, then there exist an $a \in C$ such that $\inner{e}{a} \neq 0$. Then $D = Ke \oplus Ka$ is a two dimensional associative and commutative composition subalgebra.
+\end{lemma}
+\begin{myproof}
+Assume that $\inner{e}{a} = 0$ for all $a$. Then $ e = 0$ since $\inner{}{}$ is non-degenerate on $C$. So $\inner{e}{a} \neq 0$ for some $a \in C$. Note that $ a \not \in Ke$, since in that case $\inner{e}{a} = \inner{e}{\lambda e} = 0$. Hence $D$ is two dimensional. It is non singular, since if $\inner{\lambda e + \mu a}{x} = 0$ for all $x \in D$ then in particular $\inner{\lambda e + \mu a}{e} = 0$ and $\inner{\lambda e + \mu a}{a}$ yield $\mu = 0$ and$\lambda = 0$, respectively. This would imply $\lambda e + \mu a = 0$. Hence $D$ is non-singular. It is closed under multiplication follows from
+\begin{align*}
+xy &= (\alpha e + \beta a)(\gamma e + \delta a)\\
+&= \alpha \gamma e + (\alpha \delta + \beta \gamma) a + \beta \delta ( \inner{a}{e}a - N(a)e) \\
+&= (\alpha \gamma - \beta \delta N(a))e + (\alpha \delta + \beta \gamma + \beta \delta \inner{a}{e})a
+\end{align*}
+Associativity follows from the same proof as the last proposition of the previous section. Commuativity follows from this equation, since $\alpha, \beta, \gamma$ and $\delta$ are elements of the field they commute. This allows us to change the order of all the elements in the previous equation and see that $xy = yx$.
+\end{myproof}
+
+\subsection{Hurwitz problem}
+Hurwitz theorem is a theorem about the (non)existance of solutions for the Hurwitz problem.
+\begin{theorem}
+Let $k$ be a field with characteristic other than $2$. The only values of $n \in \mathbb{N}-\{0\}$ for which the next equation hold are $1,2,4,8$:
+\begin{equation}
+\sum_{i = 1}^nx^2_i)(\sum_{i=1}^ny_i^2) = \sum_i^n z_i^2
+\end{equation}
+holds for all $x_i, y_i \in k$ and $z_i$ a linear combination of $\{x_iy_j|1 \leq i,j \leq n \}$
+\end{theorem}
+Note that if we allowed for fields of characteristic two, this statement is trivially true, since the sum of squares is the square of the sums.
+\begin{myproof}
+We will first show existance. 
+\\In the case of $n = 1$ the statement is trivial. 
+\\In the case $n = 2$ we take $z_1 = x_1y_1 + x_2 y_2$ and $z_2 = x_1y_2-x_2y_1$
+\\In the case $n = 4$ we have the following $z_i$
+\begin{eqnarray}
+z_1 = x_1y_1 - x_2y_2 - x_3y_3 - x_4y_4\\
+z_2 = x_1y_2 + x_2y_1 + x_3y_4 - x_4y_3\\
+z_3 = x_1y_3 - x_2y_4 + x_3y_1 + x_4y_2\\
+z_4 = x_1y_4 + x_2y_3 - x_3y_2 + x_4y_1\\
+\end{eqnarray}
+And in the last case when $n = 8$ we take
+\begin{eqnarray}
+z_1 = x_1y_1 - x_2 y_2 - x_3y_3 - x_4y_4 - x_5y_5 - x_6y_6 - x_7y_7 - x_8y_8\\
+z_2 = x_1y_2 + x_2y_1 + x_3y_4 - x_4y_3 + x_5y_6 + x_6y_5 + x_7y_8 - x_8y_7\\
+z_3 = x_1y_3 + x_2 y_4 + x_3y_1 + x_4y_2 x_5y_7 - x_6y_8 + x_7y_5 + x_8y_6\\
+z_4 = x_1y_4 + x_2y_3 - x_3y_2 + x_4y_1 + x_5y_8 + x_6y_7 - x_7y_6 + x_8y_5\\
+z_5 = x_1y_5 - x_2y_6 - x_3y_7 - x_4y_8 + x_5y_1 + x_6y_2 + x_7y_3 + x_8y_4\\
+z_6 = x_1y_6 + x_2y_5 + x_3y_8 - x_4y_7 - x_5y_2 + x_6y_1 - x_7y_4 + x_8y_3\\
+z_7 = x_1y_7 -x_2y_8 + x_3y_5 x_4y_6 - x_5y_3 + x_6y_4 + x_7y_1 - x_8y_2\\
+z_8 = x_1y_8 + x_2y_7 - x_3y_6 + x_4y_5 - x_5y_4 - x_6y_3 + x_7y_2 + x_8y_1\\
+\end{eqnarray}
+Now suppose we have another $n$ for which there exists a solution for Hurwitz problem. Then we can define $N(x) = \sum_{i = 1}^n x_i^2$. This yields a non-degenerate quadratic form. Moreover $N(x)N(y) = N(z(x,y))$. The only thing missing before $(K^n, N)$ becomes a composition algebra is an unit element. We will prove there exist an unit element in the next lemma. Now since we have a quadratic form on an algebra which is non-singular, we have a composition algebra $C$. Hence the dimension must be $1,2,4,8$
+\end{myproof}
+\begin{lemma}
+Let $N : A \rightarrow K$ be a non-degenerate quadratic form and $A \times A \rightarrow A, (x,y) \mapsto xy$ a bilinear map such that
+\begin{equation}
+N(xy) = N(x)N(y) \forall x,y \in A
+\end{equation}
+Then there is a map $* : A \times A \rightarrow A, (x,y) \mapsto x * y$ such that $N(x*y) = N(x)N(y)$ and there is an element $e \in A$ such that 
+\begin{equation}
+e*x = x*e = x \forall x \in A
+\end{equation}
+\end{lemma}
+\begin{myproof}
+Let $v \in A$ such that $N(v) \neq 0$. It exists since $N$ is non-degenerate. Let $u = N(v)^{-1}v^2$< THen $N(u) = 1$ and $N(ux) = N(xu) = N(x)$ for all $x \in A$. We also have $\inner{ux}{uy} = N(ux + uy) - N(ux) - N(uy) = N(x+y) - N(x) - N(y) = \inner{x}{y}$. This yields
+\begin{equation}
+\inner{L_u(x)}{L_u(y)} = \inner{x}{y}
+\end{equation}
+and
+\begin{equation}
+\inner{R_u(x)}{R_u{y}} = \inner{x}{y}
+\end{equation}
+Let $L_u^*$ be the adjoint of $L_u$> THen for all $x,y \in A$ we have
+\begin{equation}
+\inner{x}{y} = \inner{L_u(x)}{L_u(y)} = \inner{x}{L_u^*(L_u(y))}
+\end{equation}
+This means that $y = L_u^*L_u(y))$ for all $y \in A$. Hence $L_u^* = L_u^{-1}$.  Notice that $n(L_u^{-1}x  = N(uL_u^{-1}(x)) = N(x)$. We can do the same argument for $R_u$. Now we define a map $* : A \times A \rightarrow A$ as
+\begin{equation}
+x * y = R_u^{-1}(x)L_u^{-1}(y)
+\end{equation}
+Then $N(x * y) = N( R_u^{-1}(x))N(L_u^{-1}(y)) = N(x)N(y)$.
+The only thing we need to check is that we now have an unit.
+\begin{align*}
+u^2 * x &= R_u^{-1}(u^2)L_u^{-1}(x) = UL_u^{-1}(x) = x\\
+x * u^2 &= R_u^{-1}(x)L_u^{-1}(u^2) = R_u^{-1}(x) u =x
+\end{align*}
+Hence $u^2$ is the unit element. 
+\end{myproof}
+\subsection{Real composition division algebras}
+We can also classify all real composition division algebras. These are all the normed real algebras where one can define division in. If we have a real division composition algebra, there are the following options. We either have an associative division algebra. Then it is isomorphic to either $\mathbb{R}, \mathbb{C}, \mathbb{H}$. Now there is also the option there is an non-associative real division composition algebra. Then it must have dimension $8$. What turns out is that there is up to isomorphism just one way to construct a division algebra from the Quaternion. These are the octonions. The idea is that the $a$ we chose behaves either like a positive or a negative real number. If it is a positive real number we get idempotent elements, if $a$ behaves like a negative real number we get a division algebra.
 \end{document}
