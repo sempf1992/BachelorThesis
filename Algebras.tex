@@ -42,6 +42,18 @@ A norm on an algebra is a function which obeys the following relations:
 \end{itemize}
 \end{mydef}
 
+\begin{mydef}
+We call an algebra $A$ alternative if the following is true for all $x , y \in A$
+\begin{align}
+x(yx) &= (xy)x \\
+(xx)y &= x(xy) \\
+(xy)y &= x(yy) \\
+\end{align}
+\end{mydef}
+
+\begin{mydef}
+We call an algebra $A$ quadratic if for all $x \in A$ we have $x^2 = \lambda x + \mu e$ for $\lambda , \mu \in K$.
+\end{mydef}
 \subsection{Examples of algebras}
 We have some familiar examples of algebras. We note without proof the following:
 \begin{itemize}
@@ -74,8 +86,6 @@ A division algebra $D$ is an algebra that does not only contain zero, and for ev
 \begin{lemma}
 If $A$ is an associative algebra, then $A$ is a division algebra if and only if there exists a non zero identity and every non zero element $a$ has a multiplicative inverse.
 \end{lemma}
-
-MOAR THEOREMZ
 \subsection{Frobenius theorem}
 We will require the Cayley-Hamilton theorem before we prove the main theorem of this section.
 
@@ -124,61 +134,5 @@ e_ie_j = - e_ie_j
 \item if $n > 2$ then we can define $u = e_1e_2e_n$. Then $u^2 = e_1e_2e_n e_1 e_2e_n = -e_ne_2e_1e_1e_2e_n = 1$. Hence we can write $0 = u^2 -1 = (u-1)(u+1)$. Since there are no zero divisors we see that $u = \pm 1$ and hence $e_n = \pm e_1e_2$. Hence we can remove $e_n$ and keep a generating basis. Thus this basis was not minimal. Thus we cannot have $n >2$.
 \end{itemize}
 \end{myproof}
-\section{Normed division algebras}
-A normed division algebra is, as you might expect, an division algebra which also has a norm. We note that from our list of examples the first three are division rings, and they all have a norm endowed, the standard euclidean norm on $\mathbb{R}^n$.
-\section{composition algebras}
-In order for the thesis we restrict the following definition to fields with characteristic not equal to $2$, since the mayor goal of this statement is to show the Hurwitz theorem, and this is trivially false in fields of characteristic $2$.
-\begin{mydef}
-A composition algebra $A$ is an unital algebra over a field $F$ with characteristic unequal to $2$, together with a nondegenerate quadratic form which satisfies $N(xy) = N(x)N(y)$. We will refer to the norm on $A$ as a reference to $N$, since $N$ is a norm.
-\end{mydef}
-Note that we can recover an inner product which generates this norm by $\langle x, y \rangle = \frac{N(xy) - N(X) - N(Y)}{2}$, which is properly defined since $2$ is non zero.
-\subsection{Classification of all composition algebras}
-\begin{theorem}
-Let $A$ be a composition algebra over a field $F$. Then $A$ is a quadratic alternative algebra that satiesfies the moufang identities. Moreover, it only exists for dim $A = 1,2,4,8$, and they obey the following properties
-\begin{center}
 
-\begin{tabular}{c|c|c}
-dim $A$ & commutative & associative\\
-\hline
-1 & yes & yes\\
-2 & yes & yes\\
-4 & no & yes\\
-8 & no & no
-\end{tabular}
-\end{center}
-\end{theorem}
-\subsection{Hurwitz theorem}
-Hurwitz theorem is a theorem about the (non)existance of solutions for the Hurwitz problem.
-\begin{theorem}
-Let $k$ be a field with characteristic other than $2$. The only values of $n \in \mathbb{N}-\{0\}$ for which the next equation hold are $1,2,4,8$:
-\begin{equation}
-\sum_{i = 1}^nx^2_i)(\sum_{i=1}^ny_i^2) = \sum_i^n z_i^2
-\end{equation}
-holds for all $x_i, y_i \in k$ and $z_i$ a linear combination of $\{x_iy_j|1 \leq i,j \leq n \}$
-\end{theorem}
-Note that if we allowed for fields of characteristic two, this statement is trivially true, since the sum of squares is the square of the sums.
-\begin{myproof}
-We will show existance. 
-\\In the case of $n = 1$ the statement is trivial. 
-\\In the case $n = 2$ we take $z_1 = x_1y_1 + x_2 y_2$ and $z_2 = x_1y_2-x_2y_1$
-\\In the case $n = 4$ we have the following $z_i$
-\begin{eqnarray}
-z_1 = x_1y_1 - x_2y_2 - x_3y_3 - x_4y_4\\
-z_2 = x_1y_2 + x_2y_1 + x_3y_4 - x_4y_3\\
-z_3 = x_1y_3 - x_2y_4 + x_3y_1 + x_4y_2\\
-z_4 = x_1y_4 + x_2y_3 - x_3y_2 + x_4y_1\\
-\end{eqnarray}
-And in the last case when $n = 8$ we take
-\begin{eqnarray}
-z_1 = x_1y_1 - x_2 y_2 - x_3y_3 - x_4y_4 - x_5y_5 - x_6y_6 - x_7y_7 - x_8y_8\\
-z_2 = x_1y_2 + x_2y_1 + x_3y_4 - x_4y_3 + x_5y_6 + x_6y_5 + x_7y_8 - x_8y_7\\
-z_3 = x_1y_3 + x_2 y_4 + x_3y_1 + x_4y_2 x_5y_7 - x_6y_8 + x_7y_5 + x_8y_6\\
-z_4 = x_1y_4 + x_2y_3 - x_3y_2 + x_4y_1 + x_5y_8 + x_6y_7 - x_7y_6 + x_8y_5\\
-z_5 = x_1y_5 - x_2y_6 - x_3y_7 - x_4y_8 + x_5y_1 + x_6y_2 + x_7y_3 + x_8y_4\\
-z_6 = x_1y_6 + x_2y_5 + x_3y_8 - x_4y_7 - x_5y_2 + x_6y_1 - x_7y_4 + x_8y_3\\
-z_7 = x_1y_7 -x_2y_8 + x_3y_5 x_4y_6 - x_5y_3 + x_6y_4 + x_7y_1 - x_8y_2\\
-z_8 = x_1y_8 + x_2y_7 - x_3y_6 + x_4y_5 - x_5y_4 - x_6y_3 + x_7y_2 + x_8y_1\\
-\end{eqnarray}
-Now suppose we have another $n$ for which this holds. Then we can make an $n$ dimensional algebra over $F$, and define the quadratic form to be $\sum_{i = 1}^ n x_i^2$. Then we have an $n$ dimensional composition algebra, which is impossible.
-\end{myproof}
 \end{document}
